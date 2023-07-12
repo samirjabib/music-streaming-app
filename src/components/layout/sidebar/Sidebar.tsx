@@ -10,8 +10,8 @@ import SidebarItem from "./SidebarItem";
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  const routers = useMemo(() => {
-    const routeData: RouteType[] = [
+  const routers: RouteType[] = useMemo(
+    () => [
       {
         label: "Home",
         active: pathname !== "/search",
@@ -22,10 +22,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         active: pathname === "/search",
         href: "/",
       },
-    ];
-
-    return routeData;
-  }, [pathname]);
+    ],
+    [pathname]
+  );
 
   return (
     <div className="flex h-full">
