@@ -2,8 +2,8 @@
 import { FC, useEffect } from "react";
 
 import { usePathname } from "next/navigation";
-import ThemeProvider from "./ThemeProvider";
 import setupViewportHeight from "@/helpers";
+import ThemeProvider from "./ThemeProvider";
 
 type ProviderRootProps = {
   children: React.ReactNode;
