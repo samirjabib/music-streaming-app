@@ -8,7 +8,7 @@ export default function Box({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-lg h-fit w-full bg-foreground", className)}>
+    <div className={cn("rounded-lg h-fit w-full bg-secondary", className)}>
       {children}
     </div>
   );

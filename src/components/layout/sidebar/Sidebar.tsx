@@ -1,48 +1,74 @@
 "use client";
-import { useMemo } from "react";
 
 import { usePathname } from "next/navigation";
-import { Box } from "@/design-system";
-import { cn } from "@/lib";
-import { RouteType } from "./types";
-import SidebarItem from "./SidebarItem";
 
-export default function Sidebar({ children }: { children: React.ReactNode }) {
+import SidebarItem from "./SidebarItem";
+import Library from "./Library";
+import { useMemo } from "react";
+import { RouteType } from "./types";
+import { Box, Icons } from "@/design-system";
+import { cn } from "@/lib";
+
+interface SidebarProps {
+  children: React.ReactNode;
+}
+
+const Sidebar = ({ children }: SidebarProps) => {
   const pathname = usePathname();
 
-  const routers: RouteType[] = useMemo(
+  const routes: RouteType[] = useMemo(
     () => [
       {
+        icon: Icons.home,
         label: "Home",
         active: pathname !== "/search",
         href: "/",
       },
       {
+        icon: Icons.search,
         label: "Search",
+        href: "/search",
         active: pathname === "/search",
-        href: "/",
       },
     ],
     [pathname]
   );
 
   return (
-    <div className="flex h-full">
-      <div className="hidden md:flex  flex-col gap-y-2  h-full w-[300px] p-2">
+    <div
+      className={cn(
+        `
+        flex 
+        h-full
+        `
+        // player.activeId && "h-[calc(100%-80px)]"
+      )}
+    >
+      <div
+        className="
+          hidden 
+          md:flex 
+          flex-col 
+          gap-y-2 
+          h-full 
+          w-[300px] 
+          p-2
+        "
+      >
         <Box>
-          <div className={cn("flex flex-col gap-y-4 px-5 py-4")}>
-            {routers.map(({ active, href, label }, index) => (
-              <SidebarItem
-                key={index}
-                active={active}
-                href={href}
-                label={label}
-              />
+          <div className="flex flex-col gap-y-4 px-5 py-4">
+            {routes.map((item) => (
+              <SidebarItem key={item.label} {...item} />
             ))}
           </div>
         </Box>
-        <main> {children}</main>
+        <Box className="overflow-y-auto h-full">
+          <Library />
+        </Box>
       </div>
+      <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
     </div>
   );
-}
+};
+
+export default Sidebar;

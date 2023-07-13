@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={poppis.className}>
         <RootProvider>
-          <Sidebar>{children}</Sidebar>
+          <div className="h-screen">
+            <Sidebar>{children}</Sidebar>
+          </div>
         </RootProvider>
       </body>
     </html>

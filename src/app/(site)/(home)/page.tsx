@@ -1,11 +1,10 @@
-import Title from "@/design-system/typografy/title/Title";
+import Header from "@/components/layout/header/header";
+import HomePage from "@/components/home/home-page";
 
 export default function Home() {
   return (
-    <main className="">
-      <Title as="h1" size={"mainTitle"}>
-        Hello world
-      </Title>
-    </main>
+    <>
+      <HomePage />
+    </>
   );
 }

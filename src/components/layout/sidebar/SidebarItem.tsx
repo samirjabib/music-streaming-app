@@ -9,10 +9,9 @@ export default function SidebarItem({ active, href, label, icon }: RouteType) {
       href={href}
       className={cn(
         "flex flex-row h-auto items-center w-full gap-x-4 font-medium cursor-pointer",
-        "text transition hover:text-white py-1"
+        "text-white/60  text duration-200 transition-text hover:text-white py-1"
       )}
     >
-      {/* REMBEMBER ADD ICON */}
       {label}
     </Link>
   );

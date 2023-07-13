@@ -51,6 +51,10 @@ import {
   VolumeX,
   Wallet,
   X,
+  Play,
+  PlusIcon,
+  Home,
+  ListMusic,
   type Icon as LucideIcon,
   type LucideProps,
 } from "lucide-react";
@@ -110,6 +114,10 @@ export const Icons = {
   chart: BarChart3,
   upload: UploadCloud,
   placeholder: Image,
+  home: Home,
+  listMusic: ListMusic,
+  play: Play,
+  plus: PlusIcon,
   google: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
