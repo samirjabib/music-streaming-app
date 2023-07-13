@@ -3,7 +3,7 @@ import { Icons, Title } from "@/design-system";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function HomeListItem({
+export default function ListItem({
   href,
   image,
   name,
