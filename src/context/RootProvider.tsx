@@ -4,6 +4,7 @@ import { FC, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import setupViewportHeight from "@/helpers";
 import ThemeProvider from "./ThemeProvider";
+import SupabaseProvider from "./SupabaseProvider";
 
 type ProviderRootProps = {
   children: React.ReactNode;
@@ -23,7 +24,7 @@ const RootProvider: FC<ProviderRootProps> = ({ children }) => {
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        {children}
+        <SupabaseProvider>{children}</SupabaseProvider>
       </ThemeProvider>
     </>
   );
