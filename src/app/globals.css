@@ -108,11 +108,11 @@
   }
 
   .section-title {
-    @apply scroll-m-20  pb-2 sm:text-3xl text-4xl font-semibold tracking-tight transition-colors first:mt-0 uppercase text-foreground;
+    @apply scroll-m-20  pb-2 sm:text-3xl text-4xl font-semibold tracking-tight transition-colors first:mt-0  text-foreground;
   }
 
   .section-subtitle {
-    @apply text-sm font-bold uppercase text-foreground;
+    @apply text-sm font-bold  text-foreground;
   }
 
   .text-title {

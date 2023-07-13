@@ -7,6 +7,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Heart,
   ChevronsLeft,
   ChevronsRight,
   ChevronsUpDown,
@@ -117,6 +118,7 @@ export const Icons = {
   home: Home,
   listMusic: ListMusic,
   play: Play,
+  heart: Heart,
   plus: PlusIcon,
   google: ({ ...props }: LucideProps) => (
     <svg

@@ -1,6 +1,6 @@
 "use client";
 
-import { Icons } from "@/design-system";
+import { Button, Icons } from "@/design-system";
 import { cn } from "@/lib";
 import { useRouter } from "next/navigation";
 
@@ -40,7 +40,12 @@ export default function Header({
             <Icons.search size={26} className="text-foreground/60" />
           </button>
         </div>
+        <div className="flex justify-center items-center gap-x-4">
+          <Button variant={"secondary"}>Sign up</Button>
+          <Button>Log In</Button>
+        </div>
       </div>
+      {children}
     </div>
   );
 }
