@@ -1,4 +1,4 @@
-import RootProvider from "@/context/RootProvider";
+import RootProvider from "@/context/root-provider";
 import "./globals.css";
 
 import { Poppins } from "next/font/google";
