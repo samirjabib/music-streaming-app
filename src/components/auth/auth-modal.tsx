@@ -1,9 +1,7 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
-  DialogTitle,
   Button,
   DialogTrigger,
   Input,
@@ -18,16 +16,25 @@ import {
   CardTitle,
   CardContent,
   CardFooter,
+  Separator,
 } from "@/design-system";
 
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
+import { useRouter } from "next/navigation";
+import LoginProviders from "./login-providers";
+
 export default function AuthModal() {
+  const router = useRouter();
+
+  const supabase = createClientComponentClient();
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Sign In</Button>
+        <Button>Log in</Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col w-full items-center h-auto">
-        <DialogHeader></DialogHeader>
         <Tabs defaultValue="account" className="w-[400px] min-h-[400px] mt-10">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account">Log in</TabsTrigger>
@@ -35,20 +42,26 @@ export default function AuthModal() {
           </TabsList>
           <TabsContent value="account">
             <Card className="border-none">
-              <CardHeader>
-                <CardTitle>Account</CardTitle>
-                <CardDescription>
-                  Create your account here for access to funcionality
-                </CardDescription>
+              <CardHeader className="flex flex-col w-full items-center">
+                <CardTitle>Login</CardTitle>
+                <CardDescription>Login with your account</CardDescription>
               </CardHeader>
+              <CardContent>
+                <LoginProviders />
+              </CardContent>
+              <Separator className="mb-4" />
               <CardContent className="space-y-2">
                 <div className="space-y-1">
                   <Label htmlFor="username">Email</Label>
                   <Input id="email" placeholder="Put your email here" />
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
+                  <Label htmlFor="new">Password</Label>
+                  <Input
+                    id="new"
+                    type="password"
+                    placeholder="Put a password"
+                  />
                 </div>
               </CardContent>
               <CardFooter>

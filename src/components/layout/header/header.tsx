@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthModal, RegisterModal } from "@/components/auth";
-import { Icons } from "@/design-system";
+import { Icons, ThemeDropDown } from "@/design-system";
 import { cn } from "@/lib";
 import { useRouter } from "next/navigation";
 
@@ -42,6 +42,7 @@ export default function Header({
           </button>
         </div>
         <div className="flex justify-center items-center gap-x-4">
+          <ThemeDropDown />
           <RegisterModal />
           <AuthModal />
         </div>

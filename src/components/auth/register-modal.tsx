@@ -26,56 +26,52 @@ export default function RegisterModal() {
       <DialogTrigger asChild>
         <Button variant={"ghost"}>Sign in</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Sign in</DialogTitle>
-          <DialogDescription>Create your account here</DialogDescription>
-        </DialogHeader>
-        <Tabs defaultValue="account" className="w-[400px]">
+      <DialogContent className="flex flex-col w-full items-center h-auto">
+        <DialogHeader></DialogHeader>
+        <Tabs defaultValue="account" className="w-[400px] min-h-[400px] mt-10">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
+            <TabsTrigger value="account">Register</TabsTrigger>
+            <TabsTrigger value="password">Recovery Account</TabsTrigger>
           </TabsList>
           <TabsContent value="account">
-            <Card>
+            <Card className="border-none">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
                 <CardDescription>
-                  Make changes to your account here. Click save when you're
-                  done.
+                  Create your account here for access to funcionality
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="space-y-1">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" defaultValue="Pedro Duarte" />
+                  <Label htmlFor="username">Email</Label>
+                  <Input id="email" placeholder="Put your email here" />
                 </div>
                 <div className="space-y-1">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" defaultValue="@peduarte" />
+                  <Label htmlFor="new">Password</Label>
+                  <Input
+                    id="new"
+                    type="password"
+                    placeholder="Put a password"
+                  />
                 </div>
               </CardContent>
               <CardFooter>
-                <Button>Save changes</Button>
+                <Button>Submit</Button>
               </CardFooter>
             </Card>
           </TabsContent>
           <TabsContent value="password">
-            <Card>
+            <Card className="border-none">
               <CardHeader>
-                <CardTitle>Password</CardTitle>
+                <CardTitle>Recovery Account</CardTitle>
                 <CardDescription>
-                  Change your password here. After saving, you'll be logged out.
+                  Recovery your account here if you don't remember
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="space-y-1">
-                  <Label htmlFor="current">Current password</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
+                  <Label htmlFor="username">Email</Label>
+                  <Input id="email" placeholder="Put your email here" />
                 </div>
               </CardContent>
               <CardFooter>
