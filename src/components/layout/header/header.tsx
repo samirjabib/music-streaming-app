@@ -26,10 +26,10 @@ export default function Header({
         {/* desktop navigation */}
         <div className="hidden md:flex gap-x-2 items-center">
           <button className="rounded-full bg-secondary p-1 flex shadow-lg items-center justify-center hover:opacity-75 transition">
-            <Icons.chevronLeft size={30} className="text-white/60" />
+            <Icons.chevronLeft size={30} className="text-foreground/60" />
           </button>
           <button className="rounded-full bg-secondary p-1 flex shadow-lg items-center justify-center hover:opacity-75 transition">
-            <Icons.chevronRight size={30} className="text-white/60" />
+            <Icons.chevronRight size={30} className="text-foreground/60" />
           </button>
         </div>
         {/* mobile navigation */}

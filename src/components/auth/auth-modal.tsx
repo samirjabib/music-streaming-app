@@ -1,7 +1,8 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   Button,
   DialogTrigger,
   Input,
@@ -29,13 +30,24 @@ export default function AuthModal() {
 
   const supabase = createClientComponentClient();
 
+  const loginWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+
+    if (data.provider) {
+      router.refresh();
+    }
+    console.log(error, " this is the error");
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button>Log in</Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col w-full items-center h-auto">
-        <Tabs defaultValue="account" className="w-[400px] min-h-[400px] mt-10">
+        <Tabs defaultValue="account" className="w-[400px] min-h-[450px] mt-10">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="account">Log in</TabsTrigger>
             <TabsTrigger value="password">Recovery Account</TabsTrigger>
@@ -47,7 +59,7 @@ export default function AuthModal() {
                 <CardDescription>Login with your account</CardDescription>
               </CardHeader>
               <CardContent>
-                <LoginProviders />
+                <LoginProviders loginWithGoogle={loginWithGoogle} />
               </CardContent>
               <Separator className="mb-4" />
               <CardContent className="space-y-2">
