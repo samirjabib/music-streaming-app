@@ -4,6 +4,7 @@ export { default as Box } from "./elements/box/Box";
 export { default as ListItem } from "./elements/list-item/list-item";
 export { default as UserDropDown } from "./elements/user-drop-down/user-drop-down";
 export { default as Logo } from "./elements/logo/Logo";
+export { default as Overlay } from "./elements/overlay/overlay";
 
 //ui
 export * from "./elements/ui/button";
@@ -15,6 +16,7 @@ export * from "./elements/ui/label";
 export * from "./elements/ui/tabs";
 export * from "./elements/ui/card";
 export * from "./elements/ui/separator";
+export * from "./elements/ui/sheet";
 
 //Icons
 export * from "./icons/icons";
