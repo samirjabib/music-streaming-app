@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/design-system";
 
 export default function GridAnalytics() {
   return (
-    <div className="grid grid-cols-1  w-1/2 gap-4">
+    <>
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
@@ -49,6 +49,6 @@ export default function GridAnalytics() {
           </p>
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 }

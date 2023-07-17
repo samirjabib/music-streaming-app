@@ -104,7 +104,7 @@
 @layer components {
   /* Headers */
   .main-title {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl ;
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-foreground ;
   }
 
   .section-title {
@@ -112,7 +112,7 @@
   }
 
   .section-subtitle {
-    @apply text-sm font-bold  text-foreground;
+    @apply text-sm font-bold text-foreground;
   }
 
   .text-title {
