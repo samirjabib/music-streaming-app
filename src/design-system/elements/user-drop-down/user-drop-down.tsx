@@ -15,9 +15,9 @@ import {
   DropdownMenuTrigger,
 } from "../ui/drop-down-menu";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const UserDropDown = ({ user }: { user?: User }) => {
-  console.log(user, "user");
   const router = useRouter();
 
   // Create a Supabase client configured to use cookies
@@ -37,8 +37,15 @@ const UserDropDown = ({ user }: { user?: User }) => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem>Ver perfil</DropdownMenuItem>
-        <DropdownMenuItem>Favoritos</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard/admin">Dashboard</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard/admin">Cuenta</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/dashboard/admin">Dashboard</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={signOut}>Cerrar sesión</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

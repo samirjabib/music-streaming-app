@@ -24,18 +24,26 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 import { useRouter } from "next/navigation";
 import LoginProviders from "./login-providers";
+import { useState } from "react";
 
 export default function AuthModal() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const router = useRouter();
 
   const supabase = createClientComponentClient();
 
   const loginWithGoogle = async () => {
-    const res = supabase.auth.signInWithOAuth({
+    setIsSubmitting(true);
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
     });
 
-    console.log(res);
+    if (!error) {
+      router.refresh();
+    }
+    console.log(data);
   };
 
   return (

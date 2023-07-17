@@ -3,6 +3,7 @@ export { default as ThemeDropDown } from "./elements/ui/theme-drop-down";
 export { default as Box } from "./elements/box/Box";
 export { default as ListItem } from "./elements/list-item/list-item";
 export { default as UserDropDown } from "./elements/user-drop-down/user-drop-down";
+export { default as Logo } from "./elements/logo/Logo";
 
 //ui
 export * from "./elements/ui/button";
@@ -16,7 +17,7 @@ export * from "./elements/ui/card";
 export * from "./elements/ui/separator";
 
 //Icons
-export * from "./icons/Icons";
+export * from "./icons/icons";
 
 //Typografy
-export { default as Title } from "./typografy/title/Title";
+export { default as Title } from "./typografy/title/title";
