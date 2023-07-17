@@ -1,22 +1,24 @@
-"use client";
-
 import { AuthModal, RegisterModal } from "@/components/auth";
-import { Icons, ThemeDropDown } from "@/design-system";
+import { Icons, ThemeDropDown, UserDropDown } from "@/design-system";
 import { cn } from "@/lib";
-import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
-export default function Header({
+export default async function Header({
   children,
   className,
 }: {
   children: React.ReactNode;
   className?: string;
 }) {
-  const handleLogout = () => {
-    //handle logout in the future
-  };
+  // is server side, I don't like it too much but seems faster
+  const supabase = createServerComponentClient({ cookies });
 
-  const router = useRouter();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  console.log(user);
 
   return (
     <div
@@ -43,8 +45,16 @@ export default function Header({
         </div>
         <div className="flex justify-center items-center gap-x-4">
           <ThemeDropDown />
-          <RegisterModal />
-          <AuthModal />
+          {user ? (
+            <>
+              <UserDropDown />
+            </>
+          ) : (
+            <>
+              <RegisterModal />
+              <AuthModal />
+            </>
+          )}
         </div>
       </div>
       {children}

@@ -5,6 +5,8 @@ type LoginProvidersProps = {
   loginWithGoogle: () => Promise<void>;
 };
 
+
+
 const LoginProviders: FC<LoginProvidersProps> = ({ loginWithGoogle }) => {
   return (
     <div className=" space-y-4 w-full ">

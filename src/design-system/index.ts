@@ -2,7 +2,9 @@
 export { default as ThemeDropDown } from "./elements/ui/theme-drop-down";
 export { default as Box } from "./elements/box/Box";
 export { default as ListItem } from "./elements/list-item/list-item";
+export { default as UserDropDown } from "./elements/user-drop-down/user-drop-down";
 
+//ui
 export * from "./elements/ui/button";
 export * from "./elements/ui/dialog";
 export * from "./elements/ui/drop-down-menu";

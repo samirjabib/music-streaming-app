@@ -31,14 +31,11 @@ export default function AuthModal() {
   const supabase = createClientComponentClient();
 
   const loginWithGoogle = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const res = supabase.auth.signInWithOAuth({
       provider: "google",
     });
 
-    if (data.provider) {
-      router.refresh();
-    }
-    console.log(error, " this is the error");
+    console.log(res);
   };
 
   return (
