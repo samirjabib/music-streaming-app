@@ -22,4 +22,5 @@ export * from "./elements/ui/sheet";
 export * from "./icons/icons";
 
 //Typografy
-export { default as Title } from "./typografy/title/title";
+export { default as Title } from "./typografy/title";
+export { default as List } from "./typografy/list";

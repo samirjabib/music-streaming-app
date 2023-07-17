@@ -3,8 +3,11 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  List,
+  Separator,
   Title,
 } from "@/design-system";
+import Paragraph from "@/design-system/typografy/paragraph";
 
 export default function AccountInfo() {
   return (
@@ -25,20 +28,25 @@ export default function AccountInfo() {
         >
           Beatmaker
         </Title>
+        <Separator className="my-4" />
         <div>
           <Title as="h3" size={"textTitle"}>
             Estadisticas
           </Title>
-          <ul>
-            <li>
-              <h4></h4>
-              <p></p>
+          <List className=" ml-0">
+            <li className="flex flex-row justify-between">
+              <span>Tracks</span> 15
             </li>
-            <li>
-              <h4></h4>
-              <p></p>
+            <li className="flex flex-row justify-between">
+              <span>Plays</span> 300
             </li>
-          </ul>
+            <li className="flex flex-row justify-between">
+              <span>Followers</span> 700
+            </li>
+            <li className="flex flex-row justify-between">
+              <span>Likes</span> 2530
+            </li>
+          </List>
         </div>
       </CardContent>
     </Card>
