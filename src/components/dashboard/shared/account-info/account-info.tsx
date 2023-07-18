@@ -18,7 +18,7 @@ export default function AccountInfo() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <Title as="h2" size={"sectionTitle"}>
+        <Title as="h2" size={"sectionTitle"} className="text-foreground">
           Samir Jabib
         </Title>
         <Title

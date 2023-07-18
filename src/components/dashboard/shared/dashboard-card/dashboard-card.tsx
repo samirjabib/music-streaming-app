@@ -20,9 +20,9 @@ export default function DashboardCard({
         className
       )}
     >
-      <div className="absolute top-0 left-0">
+      <div className="absolute top-0 left-0 h-full w-full">
         <Overlay />
-        <Image src={imageUrl} alt={alt} />
+        <Image src={imageUrl} alt={alt} fill />
       </div>
       <div>
         <Title as="h2" size={"textTitle"}>

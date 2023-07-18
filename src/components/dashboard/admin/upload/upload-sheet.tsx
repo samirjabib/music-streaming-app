@@ -12,7 +12,11 @@ export default function UploadSheet() {
   return (
     <Sheet>
       <SheetTrigger className="bg-none">
-        <DashboardCard alt="image" imageUrl="" title="Upload Beat" />
+        <DashboardCard
+          alt="image"
+          imageUrl="	https://png.pngtree.com/background/20211217/origin…ns-of-orange-and-yellow-picture-image_1594553.jpg"
+          title="Upload Beat"
+        />
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
