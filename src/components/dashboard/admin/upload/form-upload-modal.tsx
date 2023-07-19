@@ -24,27 +24,26 @@ import { FormBeatValues } from "../../types";
 import { formBeatSchema } from "../../validators";
 import FormDataBeat from "./form-data-beat/form-data-beat";
 
+// This can come from your database or API.
+
+const defaultValues: Partial<FormBeatValues> = {
+  beatname: "",
+  genre: "",
+};
+
 export default function FormUploadModal({}: {}) {
   const form = useForm<FormBeatValues>({
     resolver: zodResolver(formBeatSchema),
-    // defaultValues,
+    defaultValues,
     mode: "onChange",
   });
 
-  // This can come from your database or API.
-  const defaultValues: Partial<FormBeatValues> = {
-    // socialMedia: [
-    //   {
-    //     value: 'https://sexsito.com',
-    //   },
-    //   {
-    //     value: 'https://sexsito.com',
-    //   },
-    // ],
-  };
+  const updateButtonRef = useRef<HTMLButtonElement | null>(null); // ask julian to this type
 
-  function onSubmit(data: any) {
-    const dataBeat = {};
+  function onSubmit(data: FormBeatValues) {
+    const dataBeat = {
+      beatname: data.beatname,
+    };
 
     console.log(dataBeat);
   }
@@ -56,14 +55,11 @@ export default function FormUploadModal({}: {}) {
           <DashboardCard alt="image" imageUrl=" " title="Subir beat" />
         </div>
       </DialogTrigger>
-      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col justify-center items-center ">
+      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col justify-center items-center rounded-lg ">
         <DialogHeader>
           <DialogTitle>Sube tu beat</DialogTitle>
         </DialogHeader>
-        <Tabs
-          defaultValue="account"
-          className="w-full flex flex-col  min-h-[550px]"
-        >
+        <Tabs defaultValue="account" className="w-full flex flex-col ">
           <TabsList
             className="border-2 w-full "
             defaultValue={"subir-beat"}
@@ -75,26 +71,42 @@ export default function FormUploadModal({}: {}) {
             <TabsTrigger value="password">Password</TabsTrigger>
           </TabsList>
           <div className="">
-            <TabsContent value="subir-beat" className="w-full py-6">
-              <Form {...form}>
-                <form>
+            <Form {...form}>
+              <form>
+                <TabsContent value="subir-beat" className="w-full py-6">
                   <FormDataBeat form={form} />
-                </form>
-              </Form>
-            </TabsContent>
-            <TabsContent value="precios" className="py-6">
-              Imagen
-            </TabsContent>
-            <TabsContent value="Publicar" className="py-6">
-              Change your password here.
-            </TabsContent>
+                </TabsContent>
+                <TabsContent value="precios" className="py-6">
+                  Imagen
+                </TabsContent>
+                <TabsContent value="Publicar" className="py-6">
+                  Change your password here.
+                </TabsContent>
+
+                {/* this button is use for ref submit with the others components outside of form */}
+                <div className=" hidden ">
+                  <Button
+                    type="submit"
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    ref={updateButtonRef}
+                  >
+                    Update profile
+                  </Button>
+                </div>
+              </form>
+            </Form>
           </div>
         </Tabs>
         <DialogFooter className="flex flex-row justify-end  w-full gap-2 ">
-          <Button disabled variant={"ghost"}>
+          <Button
+            disabled
+            variant={"ghost"}
+            type="submit"
+            onClick={() => updateButtonRef?.current?.click()}
+          >
             Cancelar
           </Button>
-          <Button disabled>Subir Beat</Button>
+          <Button>Subir Beat</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
