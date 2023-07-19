@@ -17,6 +17,7 @@ export * from "./elements/ui/tabs";
 export * from "./elements/ui/card";
 export * from "./elements/ui/separator";
 export * from "./elements/ui/sheet";
+export * from "./elements/ui/form";
 
 //Icons
 export * from "./icons/icons";

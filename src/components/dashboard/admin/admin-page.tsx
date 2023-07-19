@@ -10,13 +10,13 @@ const PlanSheetLazy = dynamic(() => import("../shared/plan/plan-sheet"));
 const SettingsSheetLazy = dynamic(
   () => import("../shared/settings/settings-sheet")
 );
-const UploadBeatModal = dynamic(() => import("./upload/upload-beat-modal"));
+const FormUploadModal = dynamic(() => import("./upload/form-upload-modal"));
 
 export default function AdminPage() {
   return (
     <div className=" py-20">
       <DashboardGrid>
-        <UploadBeatModal />
+        <FormUploadModal />
         <PaymentSheetLazy />
         <PlanSheetLazy />
         <SettingsSheetLazy />
