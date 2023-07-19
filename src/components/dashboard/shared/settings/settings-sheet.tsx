@@ -14,14 +14,14 @@ export default function AccountSettingsSheet() {
       <SheetTrigger>
         <DashboardCard
           className="bg-none"
-          title="Account Settings"
+          title="Ajustes de la cuenta"
           alt="payment-sheet"
           imageUrl=""
         />
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+          <SheetTitle>Ajustes de la cuenta</SheetTitle>
           <SheetDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.

@@ -1,17 +1,25 @@
+import dynamic from "next/dynamic";
+
 import { DashboardGrid } from "../shared";
-import PaymentSheet from "../shared/payment/payment-sheet";
-import PlanSheet from "../shared/plan/plan-sheet";
-import SettingsSheet from "../shared/settings/settings-sheet";
-import UploadSheet from "./upload/upload-sheet";
+
+//Upload lazy
+const PaymentSheetLazy = dynamic(
+  () => import("../shared/payment/payment-sheet")
+);
+const PlanSheetLazy = dynamic(() => import("../shared/plan/plan-sheet"));
+const SettingsSheetLazy = dynamic(
+  () => import("../shared/settings/settings-sheet")
+);
+const UploadBeatModal = dynamic(() => import("./upload/upload-beat-modal"));
 
 export default function AdminPage() {
   return (
     <div className=" py-20">
       <DashboardGrid>
-        <UploadSheet />
-        <PlanSheet />
-        <PaymentSheet />
-        <SettingsSheet />
+        <UploadBeatModal />
+        <PaymentSheetLazy />
+        <PlanSheetLazy />
+        <SettingsSheetLazy />
       </DashboardGrid>
     </div>
   );

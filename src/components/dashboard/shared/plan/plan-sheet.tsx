@@ -15,7 +15,7 @@ export default function Plan() {
         <DashboardCard
           className="bg-none"
           title="Plan"
-          alt="payment-sheet"
+          alt="Plan"
           imageUrl=""
         />
       </SheetTrigger>

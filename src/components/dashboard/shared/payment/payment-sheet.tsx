@@ -11,8 +11,12 @@ import DashboardCard from "../dashboard-card/dashboard-card";
 export default function PaymentSheet() {
   return (
     <Sheet>
-      <SheetTrigger>
-        <DashboardCard className="bg-none" title="PaymentSheet" alt="payment-sheet" imageUrl="" />
+      <SheetTrigger className="bg-none">
+        <DashboardCard
+          title="Metodos de pago"
+          alt="payment-sheet"
+          imageUrl=""
+        />
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
