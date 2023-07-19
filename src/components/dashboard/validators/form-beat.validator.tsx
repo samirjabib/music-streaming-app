@@ -10,4 +10,5 @@ export const formBeatSchema = z.object({
       message: "Tu nombre debe contener maximo 30 caracteres",
     }),
   genre: z.string(),
+  
 });

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Logo from "@/design-system/elements/logo/Logo";
+import Logo from "@/design-system/elements/logo/logo";
 import Desktopnavbar from "./desktop/desktop-navbar";
 
 const HeaderDashboard: FC = () => {

@@ -12,6 +12,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Form,
+  Icons,
   Tabs,
   TabsContent,
   TabsList,
@@ -54,28 +56,46 @@ export default function FormUploadModal({}: {}) {
           <DashboardCard alt="image" imageUrl=" " title="Subir beat" />
         </div>
       </DialogTrigger>
-      <DialogContent
-        position="top"
-        className="w-[95%] md:w-full py-12  flex flex-col justify-center items-center "
-      >
+      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col justify-center items-center ">
+        <DialogHeader>
+          <DialogTitle>Sube tu beat</DialogTitle>
+        </DialogHeader>
         <Tabs
           defaultValue="account"
-          className="w-[400px]  flex flex-col items-center min-h-[400px]"
+          className="w-full flex flex-col  min-h-[550px]"
         >
-          <TabsList className="">
-            <TabsTrigger value="subir-beat">Subir BEAT</TabsTrigger>
+          <TabsList
+            className="border-2 w-full "
+            defaultValue={"subir-beat"}
+            tabIndex={0}
+          >
+            <TabsTrigger value="subir-beat">Subir Beat</TabsTrigger>
             <TabsTrigger value="precios">Precios</TabsTrigger>
             <TabsTrigger value="image">Imagen</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
           </TabsList>
-
-          <TabsContent value="subir-beat" className="">
-            <FormDataBeat />
-          </TabsContent>
-          <TabsContent value="precios">Imagen</TabsContent>
-          <TabsContent value="Publicar">Change your password here.</TabsContent>
+          <div className="">
+            <TabsContent value="subir-beat" className="w-full py-6">
+              <Form {...form}>
+                <form>
+                  <FormDataBeat form={form} />
+                </form>
+              </Form>
+            </TabsContent>
+            <TabsContent value="precios" className="py-6">
+              Imagen
+            </TabsContent>
+            <TabsContent value="Publicar" className="py-6">
+              Change your password here.
+            </TabsContent>
+          </div>
         </Tabs>
-        <DialogFooter className="flex flex-col gap-2 sm:gap-0"></DialogFooter>
+        <DialogFooter className="flex flex-row justify-end  w-full gap-2 ">
+          <Button disabled variant={"ghost"}>
+            Cancelar
+          </Button>
+          <Button disabled>Subir Beat</Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

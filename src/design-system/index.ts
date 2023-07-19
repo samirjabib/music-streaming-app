@@ -1,9 +1,9 @@
 //elements
 export { default as ThemeDropDown } from "./elements/ui/theme-drop-down";
-export { default as Box } from "./elements/box/Box";
+export { default as Box } from "./elements/box/box";
 export { default as ListItem } from "./elements/list-item/list-item";
 export { default as UserDropDown } from "./elements/user-drop-down/user-drop-down";
-export { default as Logo } from "./elements/logo/Logo";
+export { default as Logo } from "./elements/logo/logo";
 export { default as Overlay } from "./elements/overlay/overlay";
 
 //ui
@@ -18,6 +18,8 @@ export * from "./elements/ui/card";
 export * from "./elements/ui/separator";
 export * from "./elements/ui/sheet";
 export * from "./elements/ui/form";
+export * from "./elements/ui/separator";
+export * from "./elements/ui/select";
 
 //Icons
 export * from "./icons/icons";
