@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const formBeatSchema = z.object({
+export const formDataBeat = z.object({
   beatname: z
     .string()
     .min(2, {
@@ -10,5 +10,6 @@ export const formBeatSchema = z.object({
       message: "Tu nombre debe contener maximo 30 caracteres",
     }),
   genre: z.string(),
-  
+  bpm: z.string().min(2).max(10),
+  key: z.string(),
 });

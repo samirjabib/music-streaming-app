@@ -7,12 +7,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/design-system";
