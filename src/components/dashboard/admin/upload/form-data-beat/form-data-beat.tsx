@@ -10,13 +10,23 @@ import { Button, Form } from "@/design-system";
 import { formDataBeat } from "@/components/dashboard/validators";
 import useFormUpload from "../hook/useFormUpload";
 
+const defaultValues: FormBeatValues = {
+  beatname: "",
+  bpm: "",
+  genre: "",
+  key: {
+    key: "",
+    type: "",
+  },
+};
+
 export default function FormDataBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
   const form = useForm<FormBeatValues>({
     resolver: zodResolver(formDataBeat),
-    // defaultValues,
+    defaultValues,
     mode: "onChange",
   });
 

@@ -16,21 +16,7 @@ import {
   SelectValue,
 } from "@/design-system";
 import { FormBeatValues } from "@/components/dashboard/types";
-
-const notes = [
-  "A",
-  "A#/Bb",
-  "B",
-  "C",
-  "C#/Db",
-  "D",
-  "D#/Eb",
-  "E",
-  "F",
-  "F#/Gb",
-  "G",
-  "G#/Ab",
-];
+import { notes } from "../utils/constants";
 
 export default function FormInputKey({
   form,
