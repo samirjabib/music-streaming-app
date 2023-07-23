@@ -35,3 +35,15 @@ export const notes = [
   "G",
   "G#/Ab",
 ];
+
+type MenuItem = {
+  id: number;
+  label: string;
+};
+
+export const menuItems: MenuItem[] = [
+  { id: 1, label: "Informacion" },
+  { id: 2, label: "Precios" },
+  { id: 3, label: "Archivos" },
+  { id: 4, label: "Publicar" },
+];

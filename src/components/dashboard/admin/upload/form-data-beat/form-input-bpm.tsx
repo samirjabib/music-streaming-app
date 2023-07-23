@@ -9,7 +9,7 @@ import {
   FormMessage,
   Input,
 } from "@/design-system";
-import { FormBeatValues } from "@/components/dashboard/types";
+import { FormBeatValues } from "../../types/form-beat-data";
 
 export default function FormInputBpm({
   form,

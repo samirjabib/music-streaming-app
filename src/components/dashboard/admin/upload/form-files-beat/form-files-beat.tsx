@@ -1,14 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import FormInputName from "./form-input-name";
-import FormInputGenre from "./form-input-genre";
-import FormInputBpm from "./form-input-bpm";
-import FormInputKey from "./form-input-key";
-import { Button, Form } from "@/design-system";
 import { formDataBeat } from "@/components/dashboard/validators";
-import useFormUpload from "../hook/useFormUpload";
 import { FormBeatValues } from "../../types/form-beat-data";
+
+import useFormUpload from "../hook/useFormUpload";
+
+import FormUplaodWav from "./form-input-wav";
+import FormUploadMp3 from "./form-input-mp3";
+import FormUploadZip from "./form-input-zip";
+
+import { Button, Form } from "@/design-system";
 
 const defaultValues: FormBeatValues = {
   beatname: "",
@@ -20,7 +22,7 @@ const defaultValues: FormBeatValues = {
   },
 };
 
-export default function FormDataBeat() {
+export default function FormFilesBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
@@ -44,11 +46,9 @@ export default function FormDataBeat() {
         className="flex flex-col gap-y-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <FormInputName form={form} />
-        <FormInputGenre form={form} />
-        <FormInputBpm form={form} />
-        <FormInputKey form={form} />
-
+        <FormUploadMp3 />
+        <FormUplaodWav />
+        <FormUploadZip />
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"}>Cancelar</Button>
           <Button type="submit">Ir a precios</Button>

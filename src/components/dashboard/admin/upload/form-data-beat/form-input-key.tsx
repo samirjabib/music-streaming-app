@@ -15,8 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/design-system";
-import { FormBeatValues } from "@/components/dashboard/types";
 import { notes } from "../utils/constants";
+import { FormBeatValues } from "../../types/form-beat-data";
 
 export default function FormInputKey({
   form,
