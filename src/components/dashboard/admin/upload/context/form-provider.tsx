@@ -1,8 +1,19 @@
 import { ReactNode, useState } from "react";
 import FormUploadContext from "./form-context";
+import { FormBeatValues } from "../../types/form-beat-data";
+
+const defaultValues: FormBeatValues = {
+  beatname: "",
+  bpm: "",
+  genre: "",
+  key: {
+    key: "",
+    type: "",
+  },
+};
 
 export default function FormProvider({ children }: { children: ReactNode }) {
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState(defaultValues);
   const [step, setStep] = useState(1);
 
   function onHandleNext() {

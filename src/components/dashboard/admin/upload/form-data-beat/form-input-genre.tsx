@@ -14,8 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/design-system";
-import { FormBeatValues } from "@/components/dashboard/types";
 import { genreAvalaible } from "../utils/constants";
+import { FormBeatValues } from "../../types/form-beat-data";
 
 export default function FormInputGenre({
   form,
@@ -35,7 +35,7 @@ export default function FormInputGenre({
                 <SelectValue placeholder="Seleccionar genero" />
               </SelectTrigger>
               <SelectContent>
-                <SelectGroup>
+                <SelectGroup placeholder="seleccionar genero">
                   {genreAvalaible.map((genre) => (
                     <SelectItem value={genre.value} key={genre.id}>
                       {genre.name}

@@ -50,8 +50,10 @@ export default function FormFilesBeat() {
         <FormUplaodWav />
         <FormUploadZip />
         <div className="flex flex-row justify-end  w-full gap-2 ">
-          <Button variant={"ghost"}>Cancelar</Button>
-          <Button type="submit">Ir a precios</Button>
+          <Button variant={"ghost"} onClick={onHandleBack}>
+            Atras
+          </Button>
+          <Button type="submit">Siguiente</Button>
         </div>
       </form>
     </Form>

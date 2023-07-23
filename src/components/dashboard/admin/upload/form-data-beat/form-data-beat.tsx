@@ -10,25 +10,20 @@ import { formDataBeat } from "@/components/dashboard/validators";
 import useFormUpload from "../hook/useFormUpload";
 import { FormBeatValues } from "../../types/form-beat-data";
 
-const defaultValues: FormBeatValues = {
-  beatname: "",
-  bpm: "",
-  genre: "",
-  key: {
-    key: "",
-    type: "",
-  },
-};
-
 export default function FormDataBeat() {
-  const { formData, onHandleBack, onHandleNext, setFormData, step } =
-    useFormUpload();
-
-  console.log(step);
+  const { onHandleNext, setFormData, step, formData } = useFormUpload();
 
   const form = useForm<FormBeatValues>({
     resolver: zodResolver(formDataBeat),
-    defaultValues,
+    defaultValues: {
+      beatname: formData.beatname,
+      bpm: formData.bpm,
+      genre: formData.genre,
+      key: {
+        key: formData.key.key,
+        type: formData.key.type,
+      },
+    },
     mode: "onChange",
   });
 
@@ -50,8 +45,7 @@ export default function FormDataBeat() {
         <FormInputKey form={form} />
 
         <div className="flex flex-row justify-end  w-full gap-2 ">
-          <Button variant={"ghost"}>Cancelar</Button>
-          <Button type="submit">Ir a precios</Button>
+          <Button type="submit">Siguiente</Button>
         </div>
       </form>
     </Form>

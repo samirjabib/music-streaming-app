@@ -25,8 +25,6 @@ const defaultValues: Partial<FormBeatValues> = {
 export default function FormUploadModal() {
   const { step } = useFormUpload();
 
-  console.log(step);
-
   function onSubmit(data: FormBeatValues) {
     const dataBeat = {
       beatname: data.beatname,
@@ -60,7 +58,7 @@ export default function FormUploadModal() {
           ))}
         </div>
         <FormProvider>
-          <ActiveStepFormComponent step={step} />
+          <ActiveStepFormComponent />
         </FormProvider>
       </DialogContent>
     </Dialog>

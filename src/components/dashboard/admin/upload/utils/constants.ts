@@ -43,7 +43,7 @@ type MenuItem = {
 
 export const menuItems: MenuItem[] = [
   { id: 1, label: "Informacion" },
-  { id: 2, label: "Precios" },
-  { id: 3, label: "Archivos" },
+  { id: 2, label: "Archivos" },
+  { id: 3, label: "Precios" },
   { id: 4, label: "Publicar" },
 ];
