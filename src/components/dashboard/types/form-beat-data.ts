@@ -1,4 +1,4 @@
 import * as z from "zod";
-import { formBeatSchema } from "../validators";
+import { formDataBeat } from "../validators";
 
-export type FormBeatValues = z.infer<typeof formBeatSchema>;
+export type FormBeatValues = z.infer<typeof formDataBeat>;

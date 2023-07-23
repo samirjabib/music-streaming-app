@@ -19,7 +19,7 @@ export default function FormInputBpm({
   return (
     <FormField
       control={form.control}
-      name="beatname"
+      name="bpm"
       render={({ field }) => (
         <FormItem>
           <FormLabel>Bpm</FormLabel>

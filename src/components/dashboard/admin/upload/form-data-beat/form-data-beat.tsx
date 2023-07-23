@@ -11,8 +11,6 @@ import { formDataBeat } from "@/components/dashboard/validators";
 import useFormUpload from "../hook/useFormUpload";
 
 export default function FormDataBeat() {
-
-  
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
@@ -22,9 +20,16 @@ export default function FormDataBeat() {
     mode: "onChange",
   });
 
+  const onSubmit = (data: FormBeatValues) => {
+    console.log(data);
+  };
+
   return (
-    <form className="flex flex-col gap-y-8">
-      <Form {...form}>
+    <Form {...form}>
+      <form
+        className="flex flex-col gap-y-4"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <FormInputName form={form} />
         <FormInputGenre form={form} />
         <FormInputBpm form={form} />
@@ -32,14 +37,9 @@ export default function FormDataBeat() {
 
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"}>Cancelar</Button>
-          <Button
-            type="submit"
-            // onClick={() => updateButtonRef?.current?.click()}
-          >
-            Subir Beat
-          </Button>
+          <Button type="submit">Ir a precios</Button>
         </div>
-      </Form>
-    </form>
+      </form>
+    </Form>
   );
 }

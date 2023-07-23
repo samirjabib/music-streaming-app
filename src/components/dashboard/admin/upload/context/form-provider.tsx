@@ -1,8 +1,9 @@
-import { ReactNode, useContext, useState } from "react";
+import { ReactNode, useState } from "react";
 import FormUploadContext from "./form-context";
+import { FormBeatValues } from "@/components/dashboard/types";
 
 export default function FormProvider({ children }: { children: ReactNode }) {
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState<FormBeatValues>();
   const [step, setStep] = useState(1);
 
   function onHandleNext() {

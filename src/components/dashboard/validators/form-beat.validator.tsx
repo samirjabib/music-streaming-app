@@ -11,5 +11,8 @@ export const formDataBeat = z.object({
     }),
   genre: z.string(),
   bpm: z.string().min(2).max(10),
-  key: z.string(),
+  key: z.object({
+    key: z.string(),
+    type: z.string(),
+  }),
 });

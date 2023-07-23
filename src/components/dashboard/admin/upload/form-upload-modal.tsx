@@ -35,10 +35,16 @@ export default function FormUploadModal({}: {}) {
           <DashboardCard alt="image" imageUrl=" " title="Subir beat" />
         </div>
       </DialogTrigger>
-      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col justify-center items-center rounded-lg ">
+      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col  rounded-lg ">
         <DialogHeader>
           <DialogTitle>Sube tu beat</DialogTitle>
         </DialogHeader>
+        <div className=" px-4 py-1 flex flex-row gap-x-4 justify-between bg-secondary rounded-lg text-sm">
+          <div>Informacion</div>
+          <div>Precios</div>
+          <div>Archivos</div>
+          <div>Publicar</div>
+        </div>
         <FormProvider>
           <ActiveStepFormComponent />
         </FormProvider>
