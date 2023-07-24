@@ -1,10 +1,7 @@
 import FormDataBeat from "./form-data-beat/form-data-beat";
 import FormFilesBeat from "./form-files-beat/form-files-beat";
-import useFormUpload from "./hook/useFormUpload";
 
-export default function ActiveStepFormComponent() {
-  const { step } = useFormUpload();
-
+export default function ActiveStepFormComponent({ step }: { step: number }) {
   switch (step) {
     case 1:
       return <FormDataBeat />;

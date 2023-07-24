@@ -11,7 +11,7 @@ import useFormUpload from "../hook/useFormUpload";
 import { FormBeatValues } from "../../types/form-beat-data";
 
 export default function FormDataBeat() {
-  const { onHandleNext, setFormData, step, formData } = useFormUpload();
+  const { onHandleNext, setFormData, formData } = useFormUpload();
 
   const form = useForm<FormBeatValues>({
     resolver: zodResolver(formDataBeat),
