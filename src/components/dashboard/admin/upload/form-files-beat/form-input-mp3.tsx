@@ -12,33 +12,26 @@ import { FormFilesValues } from "../../types";
 
 export default function FormUploadMp3({
   form,
+  handleFileChange,
 }: {
   form: UseFormReturn<FormFilesValues>;
+  handleFileChange: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => File | undefined;
 }) {
-
-  
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && file.name.toLowerCase().endsWith(".mp3")) {
-      return file;
-    } else {
-      alert("Please select a valid .mp3 file.");
-    }
-  };
-
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full  items-center gap-1.5 ">
       <FormField
         control={form.control}
         name="fileMp3"
         render={({ field }) => (
-          <FormItem>
+          <FormItem className="">
             <FormLabel htmlFor="mp3">Subir mp3</FormLabel>
             <FormControl>
               <Input
                 id="mp3"
                 type="file"
-                className=""
+                className=" py-2"
                 onChange={(event) => {
                   const file = handleFileChange(event);
                   console.log(file, " this is the file on change");

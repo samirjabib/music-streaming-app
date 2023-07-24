@@ -10,22 +10,17 @@ import {
 } from "@/design-system";
 import { FormFilesValues } from "../../types";
 
-export default function FormUplaodWav({
+export default function FormUploadWav({
   form,
+  handleFileChange,
 }: {
   form: UseFormReturn<FormFilesValues>;
+  handleFileChange: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => File | undefined;
 }) {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && file.name.toLowerCase().endsWith(".wav")) {
-      return file;
-    } else {
-      alert("Please select a valid .wav file.");
-    }
-  };
-
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full items-center gap-1.5">
       <FormField
         control={form.control}
         name="fileWav"
@@ -36,7 +31,7 @@ export default function FormUplaodWav({
               <Input
                 id="wav"
                 type="file"
-                className=""
+                className=" py-2"
                 onChange={(event) => {
                   const file = handleFileChange(event);
                   console.log(file, " this is the file on change");

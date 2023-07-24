@@ -13,28 +13,15 @@ import { archiveCompressorExtensions } from "@/components/dashboard/utils/consta
 
 export default function FormUploadZip({
   form,
+  handleFileChange,
 }: {
   form: UseFormReturn<FormFilesValues>;
+  handleFileChange: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => File | undefined;
 }) {
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file && isArchiveFile(file.name)) {
-      console.log(isArchiveFile(file.name));
-      return file;
-    } else {
-      alert("Please select a valid archive file (e.g., .zip, .rar).");
-    }
-  };
-
-  const isArchiveFile = (fileName: string) => {
-    const lowerCaseFileName = fileName.toLowerCase();
-    return archiveCompressorExtensions.some((ext) =>
-      lowerCaseFileName.endsWith(ext)
-    );
-  };
-
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full  items-center gap-1.5">
       <FormField
         control={form.control}
         name="fileZip"
@@ -45,7 +32,7 @@ export default function FormUploadZip({
               <Input
                 id="file"
                 type="file"
-                className=""
+                className=" py-2"
                 onChange={(event) => {
                   const file = handleFileChange(event);
                   console.log(file, " this is the file on change");

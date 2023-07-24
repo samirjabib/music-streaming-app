@@ -8,7 +8,7 @@ export default function FormStepTabs({ step }: { step: number }) {
         <div
           key={item.id}
           className={cn(
-            "py-1 px-2 transition-all ",
+            "py-1 px-2 transition-all text-xs sm:text-sm md:text-base ",
             step === item.id
               ? "bg-primary/20  rounded-lg text-foreground"
               : "text-foreground/80"

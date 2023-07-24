@@ -20,7 +20,7 @@ export const formDataBeat = z.object({
 });
 
 export const formFileBeat = z.object({
-  fileMp3: z.custom<File | null>(), // TODO: ask julian to this type
-  fileWav: z.custom<File | null>(),
-  fileZip: z.custom<File | null>(),
+  fileMp3: z.custom<File>(), // TODO: ask julian to this type
+  fileWav: z.custom<File>(),
+  fileZip: z.custom<File>(),
 });

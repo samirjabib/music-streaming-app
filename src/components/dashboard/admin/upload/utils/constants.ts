@@ -44,6 +44,6 @@ type MenuItem = {
 export const menuItems: MenuItem[] = [
   { id: 1, label: "Informacion" },
   { id: 2, label: "Archivos" },
-  { id: 3, label: "Precios" },
+  { id: 3, label: "Licencias" },
   { id: 4, label: "Publicar" },
 ];

@@ -6,46 +6,77 @@ import { FormFilesValues } from "../../types/form-validators-types";
 
 import useFormUpload from "../hook/useFormUpload";
 
-import FormUplaodWav from "./form-input-wav";
+import FormUploadWav from "./form-input-wav";
 import FormUploadMp3 from "./form-input-mp3";
 import FormUploadZip from "./form-input-zip";
 
 import { Button, Form } from "@/design-system";
-
-const defaultValues: FormFilesValues = {
-  fileMp3: null,
-  fileWav: null,
-  fileZip: null,
-};
+import useFiles from "./hook/useFiles";
 
 export default function FormFilesBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
-  console.log(formData);
+  const {
+    handleFileChangeMp3,
+    handleFileChangeWav,
+    handleFileChangeZip,
+    onDeleteFileMp3,
+    onDeleteFileWav,
+    onDeleteFileZip,
+  } = useFiles();
 
   const form = useForm<FormFilesValues>({
     resolver: zodResolver(formFileBeat),
-    defaultValues,
+    defaultValues: {
+      fileMp3: formData.fileMp3,
+      fileWav: formData.fileWav,
+      fileZip: formData.fileZip,
+    },
     mode: "onChange",
   });
 
   const onSubmit = (data: FormFilesValues) => {
     setFormData((prev: any) => ({ ...prev, ...data }));
-    // onHandleNext();
-    console.log(data);
+
+    onHandleNext();
   };
 
   return (
     <Form {...form}>
-      <form
-        className="flex flex-col gap-y-4"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <div className="flex flex-col gap-y-4">
-          <FormUploadMp3 form={form} />
-          <FormUplaodWav form={form} />
-          <FormUploadZip form={form} />
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="space-y-4 ">
+          {formData.fileMp3 ? (
+            <div className="flex flex-row justify-between">
+              <p>{formData.fileMp3.name} Subido</p>
+              <Button variant={"ghost"} onClick={onDeleteFileMp3}>
+                Eliminar
+              </Button>
+            </div>
+          ) : (
+            <FormUploadMp3 form={form} handleFileChange={handleFileChangeMp3} />
+          )}
+
+          {formData.fileWav ? (
+            <div className="flex flex-row justify-between">
+              <p>{formData.fileWav.name}</p>
+              <Button variant={"ghost"} onClick={onDeleteFileWav}>
+                Eliminar
+              </Button>
+            </div>
+          ) : (
+            <FormUploadWav form={form} handleFileChange={handleFileChangeWav} />
+          )}
+          {formData.fileZip ? (
+            <div className="flex flex-row justify-between">
+              <p>{formData.fileZip.name}</p>
+              <Button variant={"ghost"} onClick={onDeleteFileZip}>
+                Eliminar
+              </Button>
+            </div>
+          ) : (
+            <FormUploadZip form={form} handleFileChange={handleFileChangeZip} />
+          )}
         </div>
 
         <div className="flex flex-row justify-end  w-full gap-2 ">
