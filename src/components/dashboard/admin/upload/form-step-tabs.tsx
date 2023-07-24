@@ -3,7 +3,7 @@ import { menuItems } from "./utils/constants";
 
 export default function FormStepTabs({ step }: { step: number }) {
   return (
-    <div className="  py-1 px-1 flex flex-row  justify-between bg-secondary rounded-lg text-sm">
+    <div className="  py-1 px-1 flex flex-row  justify-between bg-secondary rounded-lg text-sm mb-4">
       {menuItems.map((item) => (
         <div
           key={item.id}

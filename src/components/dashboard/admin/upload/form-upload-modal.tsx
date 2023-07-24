@@ -21,8 +21,11 @@ export default function FormUploadModal() {
           <DashboardCard alt="image" imageUrl=" " title="Subir beat" />
         </div>
       </DialogTrigger>
-      <DialogContent className="w-[95%] md:w-full py-12  flex flex-col  rounded-lg ">
-        <DialogHeader>
+      <DialogContent
+        className="w-[95%] h-[45rem] md:w-full py-12  flex flex-col  rounded-lg top-1/2 "
+        position="top"
+      >
+        <DialogHeader className="mb-4">
           <DialogTitle>Sube tu beat</DialogTitle>
         </DialogHeader>
         <FormProvider>
