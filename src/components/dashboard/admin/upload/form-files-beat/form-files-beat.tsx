@@ -50,7 +50,7 @@ export default function FormFilesBeat() {
             <div className="flex flex-row justify-between">
               <p>{formData.fileMp3.name} Subido</p>
               <Button variant={"ghost"} onClick={onDeleteFileMp3}>
-                Eliminar
+                Cambiar
               </Button>
             </div>
           ) : (
@@ -61,7 +61,7 @@ export default function FormFilesBeat() {
             <div className="flex flex-row justify-between">
               <p>{formData.fileWav.name}</p>
               <Button variant={"ghost"} onClick={onDeleteFileWav}>
-                Eliminar
+                Cambiar
               </Button>
             </div>
           ) : (
@@ -71,7 +71,7 @@ export default function FormFilesBeat() {
             <div className="flex flex-row justify-between">
               <p>{formData.fileZip.name}</p>
               <Button variant={"ghost"} onClick={onDeleteFileZip}>
-                Eliminar
+                Cambiar
               </Button>
             </div>
           ) : (

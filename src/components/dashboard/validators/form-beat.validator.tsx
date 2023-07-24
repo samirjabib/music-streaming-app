@@ -11,11 +11,15 @@ export const formDataBeat = z.object({
     .max(30, {
       message: "Tu nombre debe contener maximo 30 caracteres",
     }),
-  genre: z.string(),
+  genre: z.string().min(2, { message: "Necesitas seleccionar un genero" }),
   bpm: z.string().min(2).max(10),
   key: z.object({
-    key: z.string(),
-    type: z.string(),
+    key: z.string().min(1, {
+      message: "Necesitas seleccionar un nota",
+    }),
+    type: z.string().min(2, {
+      message: "necesitas seleccionar un tipo",
+    }),
   }),
 });
 
