@@ -13,14 +13,16 @@ import FormUploadZip from "./form-input-zip";
 import { Button, Form } from "@/design-system";
 
 const defaultValues: FormFilesValues = {
-  fileMp3: "",
-  fileWav: "",
-  fileZip: "",
+  fileMp3: null,
+  fileWav: null,
+  fileZip: null,
 };
 
 export default function FormFilesBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
+
+  console.log(formData);
 
   const form = useForm<FormFilesValues>({
     resolver: zodResolver(formFileBeat),
@@ -29,9 +31,8 @@ export default function FormFilesBeat() {
   });
 
   const onSubmit = (data: FormFilesValues) => {
-    // setFormData((prev: any) => ({ ...prev, ...data }));
+    setFormData((prev: any) => ({ ...prev, ...data }));
     // onHandleNext();
-    console.log("hice submit en form files");
     console.log(data);
   };
 

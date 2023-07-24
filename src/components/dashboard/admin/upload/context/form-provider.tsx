@@ -14,6 +14,7 @@ const defaultValues: FormBeatValues = {
 
 export default function FormProvider({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState(defaultValues);
+  console.log(formData);
   const [step, setStep] = useState(1);
 
   function onHandleNext() {
