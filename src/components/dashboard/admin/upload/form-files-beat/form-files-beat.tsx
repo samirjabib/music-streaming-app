@@ -46,9 +46,12 @@ export default function FormFilesBeat() {
         className="flex flex-col gap-y-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <FormUploadMp3 />
-        <FormUplaodWav />
-        <FormUploadZip />
+        <div className="flex flex-col gap-y-4">
+          <FormUploadMp3 />
+          <FormUplaodWav />
+          <FormUploadZip />
+        </div>
+
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"} onClick={onHandleBack}>
             Atras
