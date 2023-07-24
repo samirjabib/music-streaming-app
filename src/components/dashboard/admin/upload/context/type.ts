@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { FormBeatValues } from "../../types/form-beat-data";
+import { FormBeatValues } from "../../types/form-validators-types";
 
 export type FormUploadContext = {
   formData: any;

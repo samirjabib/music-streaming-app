@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { formDataBeat } from "@/components/dashboard/validators";
-import { FormBeatValues } from "../../types/form-beat-data";
+import { formFileBeat } from "@/components/dashboard/validators";
+import { FormFilesValues } from "../../types/form-validators-types";
 
 import useFormUpload from "../hook/useFormUpload";
 
@@ -12,31 +12,26 @@ import FormUploadZip from "./form-input-zip";
 
 import { Button, Form } from "@/design-system";
 
-const defaultValues: FormBeatValues = {
-  beatname: "",
-  bpm: "",
-  genre: "",
-  key: {
-    key: "",
-    type: "",
-  },
+const defaultValues: FormFilesValues = {
+  fileMp3: "",
+  fileWav: "",
+  fileZip: "",
 };
 
 export default function FormFilesBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
-  console.log(step);
-
-  const form = useForm<FormBeatValues>({
-    resolver: zodResolver(formDataBeat),
+  const form = useForm<FormFilesValues>({
+    resolver: zodResolver(formFileBeat),
     defaultValues,
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormBeatValues) => {
-    setFormData((prev: any) => ({ ...prev, ...data }));
-    onHandleNext();
+  const onSubmit = (data: FormFilesValues) => {
+    // setFormData((prev: any) => ({ ...prev, ...data }));
+    // onHandleNext();
+    console.log("hice submit en form files");
     console.log(data);
   };
 
@@ -47,9 +42,9 @@ export default function FormFilesBeat() {
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="flex flex-col gap-y-4">
-          <FormUploadMp3 />
-          <FormUplaodWav />
-          <FormUploadZip />
+          <FormUploadMp3 form={form} />
+          <FormUplaodWav form={form} />
+          <FormUploadZip form={form} />
         </div>
 
         <div className="flex flex-row justify-end  w-full gap-2 ">

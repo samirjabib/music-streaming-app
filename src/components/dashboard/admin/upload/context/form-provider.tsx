@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import FormUploadContext from "./form-context";
-import { FormBeatValues } from "../../types/form-beat-data";
+import { FormBeatValues } from "../../types/form-validators-types";
 
 const defaultValues: FormBeatValues = {
   beatname: "",

@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/design-system";
 import { notes } from "../utils/constants";
-import { FormBeatValues } from "../../types/form-beat-data";
+import { FormBeatValues } from "../../types/form-validators-types";
 
 export default function FormInputKey({
   form,

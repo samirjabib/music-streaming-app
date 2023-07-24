@@ -8,7 +8,7 @@ import FormInputKey from "./form-input-key";
 import { Button, Form } from "@/design-system";
 import { formDataBeat } from "@/components/dashboard/validators";
 import useFormUpload from "../hook/useFormUpload";
-import { FormBeatValues } from "../../types/form-beat-data";
+import { FormBeatValues } from "../../types/form-validators-types";
 
 export default function FormDataBeat() {
   const { onHandleNext, setFormData, formData } = useFormUpload();

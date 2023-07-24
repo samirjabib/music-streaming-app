@@ -1,4 +1,6 @@
+import isValidFileType from "@/utils/validate-file";
 import * as z from "zod";
+import { archiveCompressorExtensions } from "../utils/constants";
 
 export const formDataBeat = z.object({
   beatname: z
@@ -15,4 +17,10 @@ export const formDataBeat = z.object({
     key: z.string(),
     type: z.string(),
   }),
+});
+
+export const formFileBeat = z.object({
+  fileMp3: z.custom<File>(), // TODO: ask julian to this type
+  fileWav: z.custom<File>(),
+  fileZip: z.custom<File>(),
 });
