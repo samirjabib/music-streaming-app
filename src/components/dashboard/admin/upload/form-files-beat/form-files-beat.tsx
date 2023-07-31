@@ -45,11 +45,11 @@ export default function FormFilesBeat() {
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="space-y-4 ">
+        <div className="space-y-6 mb-12 ">
           {formData.fileMp3 ? (
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between items-center">
               <p>{formData.fileMp3.name} Subido</p>
-              <Button variant={"ghost"} onClick={onDeleteFileMp3}>
+              <Button variant={"outline"} onClick={onDeleteFileMp3}>
                 Cambiar
               </Button>
             </div>
@@ -58,9 +58,9 @@ export default function FormFilesBeat() {
           )}
 
           {formData.fileWav ? (
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between items-center">
               <p>{formData.fileWav.name}</p>
-              <Button variant={"ghost"} onClick={onDeleteFileWav}>
+              <Button variant={"outline"} onClick={onDeleteFileWav}>
                 Cambiar
               </Button>
             </div>
@@ -68,9 +68,9 @@ export default function FormFilesBeat() {
             <FormUploadWav form={form} handleFileChange={handleFileChangeWav} />
           )}
           {formData.fileZip ? (
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between items-center">
               <p>{formData.fileZip.name}</p>
-              <Button variant={"ghost"} onClick={onDeleteFileZip}>
+              <Button variant={"outline"} onClick={onDeleteFileZip}>
                 Cambiar
               </Button>
             </div>

@@ -1,39 +1,44 @@
 export const genreAvalaible = [
   {
     id: 1,
-    name: "Trap",
+    label: "Trap",
     value: "trap",
   },
   {
     id: 2,
-    name: "Reggaeton",
+    label: "Reggaeton",
     value: "reggaeton",
   },
   {
     id: 3,
-    name: "Dancehall",
+    label: "Dancehall",
     value: "dancehall",
   },
   {
     id: 4,
-    name: "Techno",
+    label: "Techno",
     value: "techno",
   },
 ];
 
 export const notes = [
-  "A",
-  "A#/Bb",
-  "B",
-  "C",
-  "C#/Db",
-  "D",
-  "D#/Eb",
-  "E",
-  "F",
-  "F#/Gb",
-  "G",
-  "G#/Ab",
+  { label: "A", value: "A" },
+  { label: "A#/Bb", value: "A#/Bb" },
+  { label: "B", value: "B" },
+  { label: "C", value: "C" },
+  { label: "C#/Db", value: "C#/Db" },
+  { label: "D", value: "D" },
+  { label: "D#/Eb", value: "D#/Eb" },
+  { label: "E", value: "E" },
+  { label: "F", value: "F" },
+  { label: "F#/Gb", value: "F#/Gb" },
+  { label: "G", value: "G" },
+  { label: "G#/Ab", value: "G#/Ab" },
+];
+
+export const notes_type = [
+  { label: "Menor", value: "mayor" },
+  { label: "Mayor", value: "menor" },
 ];
 
 type MenuItem = {

@@ -2,17 +2,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { formFileBeat } from "@/components/dashboard/validators";
-import { FormFilesValues } from "../../types/form-validators-types";
+import { FormLicenseValues } from "../../types/form-validators-types";
 
 import useFormUpload from "../hook/useFormUpload";
 
 import { Button, Form } from "@/design-system";
-
-const defaultValues: FormFilesValues = {
-  fileMp3: '',
-  fileWav: '',
-  fileZip: '',
-};
+import FormInputBasicLicense from "./form-input-basic";
+import FormInputExclusiveLicense from "./form-input-exclusive";
+import FormInputPremiumLicense from "./form-input-premium";
+import FormInputProLicense from "./form-input-pro";
 
 export default function FormLicenseBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
@@ -20,23 +18,29 @@ export default function FormLicenseBeat() {
 
   console.log(formData);
 
-  const form = useForm<FormFilesValues>({
+  const form = useForm<FormLicenseValues>({
     resolver: zodResolver(formFileBeat),
-    defaultValues,
+    defaultValues: {
+      basic: "",
+      exclusive: "",
+      premium: "",
+      pro: "",
+    },
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormFilesValues) => {
-    setFormData((prev: any) => ({ ...prev, ...data }));
-    // onHandleNext();
+  const onSubmit = (data: FormLicenseValues) => {
+    // setFormData((prev: any) => ({ ...prev, ...data }));
     console.log(data);
   };
 
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="space-y-4 ">License Beat</div>
-
+        <FormInputBasicLicense form={form} />
+        {/* <FormInputExclusiveLicense form={form} />
+        <FormInputProLicense form={form} />
+        <FormInputPremiumLicense form={form} /> */}
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"} onClick={onHandleBack}>
             Atras

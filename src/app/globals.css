@@ -142,4 +142,45 @@
   .text-muted {
     @apply text-sm text-muted-foreground ;
   }
+/****************************** REACT-SELECT STYLES**************************/
+
+
+  .select-component-container .css-12a83d4-MultiValueRemove{
+    @apply bg-secondary/80 text-foreground rounded-none
+  }
+
+  .select-component-container .css-wsp0cs-MultiValueGeneric{
+    @apply bg-secondary text-foreground rounded-none
+  }
+
+
+  .select-component-container .css-1dimb5e-singleValue {
+    @apply text-foreground
+  } 
+
+  /* //Remember change this color for other better  */
+  .select-component-container .select-component__option--is-selected {
+    @apply bg-green-500
+  }
+
+  .select-component-container .css-10wo9uf-option{
+    @apply bg-background hover:bg-secondary text-foreground
+  }
+
+  .select-component-container .select-component__option--is-focused {
+    @apply bg-accent
+  }
+
+  .select-component-container .css-1nmdiq5-menu{
+    @apply bg-background text-foreground
+  }
+
+  .select-component-container  .css-13cymwt-control{
+    @apply flex  w-full rounded-md border border-input bg-background text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50
+  }
+
+  .select-component-container .select-component__control{
+    @apply rounded-md bg-background text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50
+  }
+
 }

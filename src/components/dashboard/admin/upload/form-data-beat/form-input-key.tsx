@@ -1,4 +1,5 @@
 import { UseFormReturn } from "react-hook-form";
+import Select from "react-select";
 
 import {
   FormControl,
@@ -7,15 +8,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
 } from "@/design-system";
-import { notes } from "../utils/constants";
+
+import { notes, notes_type } from "../utils/constants";
 import { FormBeatValues } from "../../types/form-validators-types";
 
 export default function FormInputKey({
@@ -24,31 +19,34 @@ export default function FormInputKey({
   form: UseFormReturn<FormBeatValues>;
 }) {
   return (
-    <div className="flex flex-row gap-x-4">
+    <>
       <FormField
         control={form.control}
         name="key.key"
         render={({ field }) => (
-          <FormItem className="w-1/2">
-            <FormLabel>Tonalidad</FormLabel>
+          <FormItem>
+            <FormLabel>Elige la nota</FormLabel>
             <FormControl>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Tonalidad" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {notes.map((note, index) => (
-                      <SelectItem value={note} key={index}>
-                        {note}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Select
+                instanceId="key"
+                id="key"
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                  }),
+                }}
+                className="select-component-container"
+                classNamePrefix="select-component"
+                options={notes}
+                onChange={(selectedOption) => {
+                  const value = selectedOption ? selectedOption.value : "";
+                  field.onChange(value);
+                }}
+                value={notes.find((c) => c.value === field.value)}
+              />
             </FormControl>
             <FormDescription>
-              Escoge la tonalidad en la que hiciste tu ritmo
+              Describe tu tipo de cuerpo de manera corta
             </FormDescription>
             <FormMessage />
           </FormItem>
@@ -58,28 +56,34 @@ export default function FormInputKey({
         control={form.control}
         name="key.type"
         render={({ field }) => (
-          <FormItem className="w-1/2">
-            <FormLabel>Tipo</FormLabel>
+          <FormItem>
+            <FormLabel>Elige la nota</FormLabel>
             <FormControl>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Tipo..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="mynor">Menor</SelectItem>
-                    <SelectItem value="mayor">Mayor</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Select
+                instanceId="key_type"
+                id="key_type"
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                  }),
+                }}
+                className="select-component-container"
+                classNamePrefix="select-component"
+                options={notes_type}
+                onChange={(selectedOption) => {
+                  const value = selectedOption ? selectedOption.value : "";
+                  field.onChange(value);
+                }}
+                value={notes_type.find((c) => c.value === field.value)}
+              />
             </FormControl>
             <FormDescription>
-              Ecoge entre mayor o menor la Tonalidad
+              Describe tu tipo de cuerpo de manera corta
             </FormDescription>
             <FormMessage />
           </FormItem>
         )}
       />
-    </div>
+    </>
   );
 }

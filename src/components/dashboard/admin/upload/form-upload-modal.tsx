@@ -22,7 +22,7 @@ export default function FormUploadModal() {
         </div>
       </DialogTrigger>
       <DialogContent
-        className="w-[95%] h-[45rem] md:w-full py-12  flex flex-col  rounded-lg top-1/2 "
+        className="w-[95%]  md:w-full py-12  flex flex-col  rounded-lg top-1/2 "
         position="top"
       >
         <DialogHeader className="mb-4">

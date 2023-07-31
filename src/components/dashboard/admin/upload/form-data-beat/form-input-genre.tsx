@@ -1,4 +1,5 @@
 import { UseFormReturn } from "react-hook-form";
+import Select from "react-select";
 
 import {
   FormControl,
@@ -7,7 +8,6 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Select,
   SelectContent,
   SelectGroup,
   SelectItem,
@@ -28,25 +28,28 @@ export default function FormInputGenre({
       name="genre"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Genero musical</FormLabel>
+          <FormLabel>Tipo de cuerpo</FormLabel>
           <FormControl>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Seleccionar genero" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup placeholder="seleccionar genero">
-                  {genreAvalaible.map((genre) => (
-                    <SelectItem value={genre.value} key={genre.id}>
-                      {genre.name}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <Select
+              instanceId="genre_type"
+              id="genre_type"
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                }),
+              }}
+              className="select-component-container"
+              classNamePrefix="select-component"
+              options={genreAvalaible}
+              onChange={(selectedOption) => {
+                const value = selectedOption ? selectedOption.value : "";
+                field.onChange(value);
+              }}
+              value={genreAvalaible.find((c) => c.value === field.value)}
+            />
           </FormControl>
           <FormDescription>
-            Escoge uno de nuestros generos disponibles
+            Describe tu tipo de cuerpo de manera corta
           </FormDescription>
           <FormMessage />
         </FormItem>
