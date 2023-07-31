@@ -37,7 +37,7 @@ export default function FormVizualizerInput({
                   console.log(file, " this is the file on change");
                   field.onChange(file);
                 }}
-                accept=".mp3"
+                accept="video/mp4, video/webm, video/quicktime"
               />
             </FormControl>
             <FormDescription>Sube tu vizualizer</FormDescription>

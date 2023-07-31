@@ -56,7 +56,7 @@ export const formPublishBeat = z.object({
   vizualizer: z.custom<File>((v) => v instanceof File, {
     message: "Es necesario un visualizer",
   }),
-  tags: z.string().min(1, {
-    message: "Debes pasar un valor para la licencia exclusiva",
+  tags: z.string().array().nonempty({
+    message: "los tags no pueden estar vacios",
   }),
 });

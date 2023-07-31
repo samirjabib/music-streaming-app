@@ -10,8 +10,9 @@ import { Button, Form } from "@/design-system";
 import useFiles from "../form-files-beat/hook/useFiles";
 import FormCovertArtInput from "./form-cover-art-input";
 import FormVizualizerInput from "./form-vizualizer-input";
+import FormTagInput from "./form-tags-input";
 
-export default function FormLicenseBeat() {
+export default function FormPublishBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
@@ -26,7 +27,7 @@ export default function FormLicenseBeat() {
     resolver: zodResolver(formPublishBeat),
     defaultValues: {
       coverArt: formData?.coverArt || "",
-      tags: formData?.tags || [],
+      tags: formData?.tags || [""],
       vizualizer: formData.vizualiser || "",
     },
     mode: "onChange",
@@ -35,7 +36,7 @@ export default function FormLicenseBeat() {
   const onSubmit = (data: any) => {
     setFormData((prev: any) => ({ ...prev, ...data }));
     console.log(data);
-    onHandleNext();
+    // onHandleNext();
   };
 
   return (
@@ -49,6 +50,7 @@ export default function FormLicenseBeat() {
           form={form}
           handleFileChange={handleFileChangeVideo}
         />
+        <FormTagInput form={form} />
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"} onClick={onHandleBack}>
             Atras

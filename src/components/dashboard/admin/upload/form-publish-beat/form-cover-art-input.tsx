@@ -29,7 +29,7 @@ export default function FormCovertArtInput({
             <FormLabel htmlFor="covert-art">Subir Cover art</FormLabel>
             <FormControl>
               <Input
-                id="mp3"
+                id="file"
                 type="file"
                 className=" py-2"
                 onChange={(event) => {
@@ -37,7 +37,7 @@ export default function FormCovertArtInput({
                   console.log(file, " this is the file on change");
                   field.onChange(file);
                 }}
-                accept=".mp3"
+                accept="image/jpeg, image/png,"
               />
             </FormControl>
             <FormDescription>Sube tu cover art</FormDescription>

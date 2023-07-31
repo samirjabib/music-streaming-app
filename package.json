@@ -37,6 +37,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
     "react-select": "^5.7.4",
+    "react-tagsinput": "^3.20.3",
     "stripe": "^12.12.0",
     "supabase": ">=1.8.1",
     "tailwind-merge": "^1.13.2",
@@ -46,6 +47,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/react-tagsinput": "^3.20.0",
     "encoding": "^0.1.13"
   }
 }
