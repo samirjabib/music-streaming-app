@@ -35,16 +35,28 @@ export const formFileBeat = z.object({
 });
 
 export const formLicensesBeat = z.object({
-  basic: z.string().min(2, {
+  basic: z.string().min(1, {
     message: "Debes pasar un valor para la licencia basica",
   }),
-  // premium: z.string().min(2, {
-  //   message: "Debes pasar un valor para la licencia premium",
-  // }),
-  // pro: z.string().min(2, {
-  //   message: "Debes pasar un valor para la licencia pro",
-  // }),
-  // exclusive: z.string().min(2, {
-  //   message: "Debes pasar un valor para la licencia exclusiva",
-  // }),
+  premium: z.string().min(1, {
+    message: "Debes pasar un valor para la licencia premium",
+  }),
+  pro: z.string().min(1, {
+    message: "Debes pasar un valor para la licencia pro",
+  }),
+  exclusive: z.string().min(1, {
+    message: "Debes pasar un valor para la licencia exclusiva",
+  }),
+});
+
+export const formPublishBeat = z.object({
+  coverArt: z.custom<File>((v) => v instanceof File, {
+    message: "Es necesario un cover art",
+  }),
+  vizualizer: z.custom<File>((v) => v instanceof File, {
+    message: "Es necesario un visualizer",
+  }),
+  tags: z.string().min(1, {
+    message: "Debes pasar un valor para la licencia exclusiva",
+  }),
 });

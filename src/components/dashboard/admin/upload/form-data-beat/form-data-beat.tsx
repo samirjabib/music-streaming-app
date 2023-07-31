@@ -11,7 +11,7 @@ import useFormUpload from "../hook/useFormUpload";
 import { FormBeatValues } from "../../types/form-validators-types";
 
 export default function FormDataBeat() {
-  const { onHandleNext, setFormData, formData } = useFormUpload();
+  const { onHandleNext, setFormData, formData, onHandleBack } = useFormUpload();
 
   const form = useForm<FormBeatValues>({
     resolver: zodResolver(formDataBeat),
@@ -45,6 +45,9 @@ export default function FormDataBeat() {
         <FormInputKey form={form} />
 
         <div className="flex flex-row justify-end  w-full gap-2 ">
+          <Button variant={"ghost"} onClick={onHandleBack}>
+            Atras
+          </Button>
           <Button type="submit">Siguiente</Button>
         </div>
       </form>
