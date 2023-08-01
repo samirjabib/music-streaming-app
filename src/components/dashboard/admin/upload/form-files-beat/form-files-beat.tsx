@@ -2,7 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { formFileBeat } from "@/components/dashboard/validators";
-import { FormFilesValues } from "../../types/form-validators-types";
+import {
+  CombinedFormValues,
+  FormFilesValues,
+} from "../../types/form-validators-types";
 
 import useFormUpload from "../hook/useFormUpload";
 
@@ -37,7 +40,7 @@ export default function FormFilesBeat() {
   });
 
   const onSubmit = (data: FormFilesValues) => {
-    setFormData((prev: any) => ({ ...prev, ...data }));
+    setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
 
     onHandleNext();
   };

@@ -2,7 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import { formPublishBeat } from "@/components/dashboard/validators";
-import { FormPublishValues } from "../../types/form-validators-types";
+import {
+  CombinedFormValues,
+  FormPublishValues,
+} from "../../types/form-validators-types";
 
 import useFormUpload from "../hook/useFormUpload";
 
@@ -11,10 +14,13 @@ import useFiles from "../form-files-beat/hook/useFiles";
 import FormCovertArtInput from "./form-cover-art-input";
 import FormVizualizerInput from "./form-vizualizer-input";
 import FormTagInput from "./form-tags-input";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function FormPublishBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
+
+  const supabase = createClientComponentClient();
 
   const {
     handleFileChangeImage,
@@ -33,10 +39,12 @@ export default function FormPublishBeat() {
     mode: "onChange",
   });
 
-  const onSubmit = (data: any) => {
-    setFormData((prev: any) => ({ ...prev, ...data }));
+  const onSubmit = (data: FormPublishValues) => {
+    setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
     console.log(data);
-    // onHandleNext();
+
+    try {
+    } catch (error) {}
   };
 
   return (

@@ -11,3 +11,9 @@ export type FormBeatValues = z.infer<typeof formDataBeat>;
 export type FormFilesValues = z.infer<typeof formFileBeat>;
 export type FormLicenseValues = z.infer<typeof formLicensesBeat>;
 export type FormPublishValues = z.infer<typeof formPublishBeat>;
+
+export type CombinedFormValues =
+  | FormBeatValues
+  | FormFilesValues
+  | FormLicenseValues
+  | FormPublishValues;
