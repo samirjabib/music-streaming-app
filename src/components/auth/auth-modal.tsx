@@ -1,5 +1,7 @@
 "use client";
 
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
 import {
   Dialog,
   DialogContent,
@@ -20,30 +22,20 @@ import {
   Separator,
 } from "@/design-system";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-
 import { useRouter } from "next/navigation";
 import LoginProviders from "./login-providers";
 import { useState } from "react";
 
 export default function AuthModal() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const router = useRouter();
-
   const supabase = createClientComponentClient();
 
   const loginWithGoogle = async () => {
-    setIsSubmitting(true);
-
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/api/auth/callback",
+      },
     });
-
-    if (!error) {
-      router.refresh();
-    }
-    console.log(data);
   };
 
   return (
