@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import uniqid from "uniqid";
 
 import { formPublishBeat } from "@/components/dashboard/validators";
 import {
@@ -43,13 +44,22 @@ export default function FormPublishBeat({ user }: { user: User | null }) {
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormPublishValues) => {
+  const onSubmit = async (data: FormPublishValues) => {
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
-
     try {
-      console.log(user, ' user in publish beat')
+      console.log(formData, " this is the form data");
+      console.log(user, " user in publish beat");
+      const uniqueID = uniqid();
+      const { data: fileMp3Data, error: fileMp3Error } = await supabase.storage
+        .from("beats/mp3")
+        .upload(
+          `beat.mp3-${formData.beatname}-${user?.id}-${uniqueID}`,
+          formData.fileMp3
+        );
+        console.log(fileMp3Data)
+        console.log(fileMp3Error)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
