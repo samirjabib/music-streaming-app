@@ -59,6 +59,8 @@ export default function FormPublishBeat({ user }: { user: User | null }) {
     const filePathWav = await uploadWav({ wavFile, user_id });
     const filePathCoverArt = await uploadCoverArt({ coverArt, user_id });
     console.log(filePathMp3);
+    console.log(filePathWav);
+    console.log(filePathCoverArt);
   };
 
   return (

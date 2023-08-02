@@ -15,7 +15,7 @@ export async function uploadMp3({
     console.log(mp3File, user_id);
     const uniqueID = uniqid();
     const { data: fileMp3Data, error: fileMp3Error } = await supabase.storage
-      .from(`${user_id}/mp3`)
+      .from(`producers/${user_id}/beats/mp3`)
       .upload(`beat-${user_id}-${uniqueID}.mp3`, mp3File);
 
     if (fileMp3Error) {
@@ -38,7 +38,7 @@ export async function uploadWav({
     console.log(wavFile, user_id);
     const uniqueID = uniqid();
     const { data: fileWavData, error: fileMp3Error } = await supabase.storage
-      .from(`${user_id}/wav`)
+      .from(`producers/${user_id}/beats/wav`)
       .upload(`beat-${user_id}-${uniqueID}.wav`, wavFile);
 
     if (fileMp3Error) {
@@ -61,7 +61,7 @@ export async function uploadCoverArt({
     const uniqueID = uniqid();
     const { data: fileCoverArtData, error: fileMp3Error } =
       await supabase.storage
-        .from(`${user_id}/coverArt`)
+        .from(`producers/${user_id}/beats/coverArt`)
         .upload(`beat-${user_id}-${uniqueID}.covertArt`, coverArt);
 
     if (fileMp3Error) {
