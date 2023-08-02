@@ -63,7 +63,7 @@ export default function FormInputLicenses({
           </FormItem>
         )}
       />
-      <FormField
+      {/* <FormField
         control={form.control}
         name="premium"
         render={({ field }) => (
@@ -106,7 +106,7 @@ export default function FormInputLicenses({
             <FormMessage />
           </FormItem>
         )}
-      />
+      /> */}
     </>
   );
 }

@@ -12,8 +12,10 @@ import DashboardCard from "../../shared/dashboard-card/dashboard-card";
 
 import FormUpload from "./form-upload";
 import FormProvider from "./context/form-provider";
+import { User } from "@supabase/supabase-js";
 
-export default function FormUploadModal() {
+export default function FormUploadModal({ user }: { user: User | null }) {
+  
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -29,7 +31,7 @@ export default function FormUploadModal() {
           <DialogTitle>Sube tu beat</DialogTitle>
         </DialogHeader>
         <FormProvider>
-          <FormUpload />
+          <FormUpload user={user} />
         </FormProvider>
       </DialogContent>
     </Dialog>

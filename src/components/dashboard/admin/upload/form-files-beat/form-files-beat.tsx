@@ -70,7 +70,7 @@ export default function FormFilesBeat() {
           ) : (
             <FormUploadWav form={form} handleFileChange={handleFileChangeWav} />
           )}
-          {formData.fileZip ? (
+          {/* {formData.fileZip ? (
             <div className="flex flex-row justify-between items-center">
               <p>{formData.fileZip.name}</p>
               <Button variant={"outline"} onClick={onDeleteFileZip}>
@@ -79,7 +79,7 @@ export default function FormFilesBeat() {
             </div>
           ) : (
             <FormUploadZip form={form} handleFileChange={handleFileChangeZip} />
-          )}
+          )} */}
         </div>
 
         <div className="flex flex-row justify-end  w-full gap-2 ">

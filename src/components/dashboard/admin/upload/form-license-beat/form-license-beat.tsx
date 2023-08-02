@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -14,13 +15,14 @@ import FormInputLicenses from "./form-input-licenses";
 
 export default function FormLicenseBeat() {
   const { onHandleBack, onHandleNext, setFormData } = useFormUpload();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<FormLicenseValues>({
     resolver: zodResolver(formLicensesBeat),
     defaultValues: {
       basic: "",
-      exclusive: "",
-      premium: "",
+      // exclusive: "",
+      // premium: "",
       pro: "",
     },
     mode: "onChange",
@@ -28,7 +30,6 @@ export default function FormLicenseBeat() {
 
   const onSubmit = (data: FormLicenseValues) => {
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
-
     onHandleNext();
   };
 

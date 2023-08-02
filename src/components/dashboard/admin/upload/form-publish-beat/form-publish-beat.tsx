@@ -14,9 +14,13 @@ import useFiles from "../form-files-beat/hook/useFiles";
 import FormCovertArtInput from "./form-cover-art-input";
 import FormVizualizerInput from "./form-vizualizer-input";
 import FormTagInput from "./form-tags-input";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import {
+  User,
+  createClientComponentClient,
+} from "@supabase/auth-helpers-nextjs";
 
-export default function FormPublishBeat() {
+export default function FormPublishBeat({ user }: { user: User | null }) {
+  console.log(user, " user in form publish sheet");
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
@@ -41,10 +45,12 @@ export default function FormPublishBeat() {
 
   const onSubmit = (data: FormPublishValues) => {
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
-    console.log(data);
 
     try {
-    } catch (error) {}
+      console.log(user, ' user in publish beat')
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (

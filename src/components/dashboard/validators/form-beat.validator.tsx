@@ -29,24 +29,24 @@ export const formFileBeat = z.object({
   fileWav: z.custom<File>((v) => v instanceof File, {
     message: "Archivo en Wav es requerido",
   }),
-  fileZip: z.custom<File>((v) => v instanceof File, {
-    message: "Archivo en Zip(stems) es requerido",
-  }),
+  // fileZip: z.custom<File>((v) => v instanceof File, {
+  //   message: "Archivo en Zip(stems) es requerido",
+  // }),
 });
 
 export const formLicensesBeat = z.object({
   basic: z.string().min(1, {
     message: "Debes pasar un valor para la licencia basica",
   }),
-  premium: z.string().min(1, {
-    message: "Debes pasar un valor para la licencia premium",
-  }),
+  // premium: z.string().min(1, {
+  //   message: "Debes pasar un valor para la licencia premium",
+  // }),
   pro: z.string().min(1, {
     message: "Debes pasar un valor para la licencia pro",
   }),
-  exclusive: z.string().min(1, {
-    message: "Debes pasar un valor para la licencia exclusiva",
-  }),
+  // exclusive: z.string().min(1, {
+  //   message: "Debes pasar un valor para la licencia exclusiva",
+  // }),
 });
 
 export const formPublishBeat = z.object({
