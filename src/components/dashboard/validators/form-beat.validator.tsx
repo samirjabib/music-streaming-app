@@ -50,12 +50,13 @@ export const formLicensesBeat = z.object({
 });
 
 export const formPublishBeat = z.object({
+  //desactive visualizer for now, for save space in the storage in demo
   coverArt: z.custom<File>((v) => v instanceof File, {
     message: "Es necesario un cover art",
   }),
-  vizualizer: z.custom<File>((v) => v instanceof File, {
-    message: "Es necesario un visualizer",
-  }),
+  // vizualizer: z.custom<File>((v) => v instanceof File, {
+  //   message: "Es necesario un visualizer",
+  // }),
   tags: z.string().array().nonempty({
     message: "los tags no pueden estar vacios",
   }),

@@ -34,7 +34,6 @@ export default function FormFilesBeat() {
     defaultValues: {
       fileMp3: formData.fileMp3,
       fileWav: formData.fileWav,
-      fileZip: formData.fileZip,
     },
     mode: "onChange",
   });
