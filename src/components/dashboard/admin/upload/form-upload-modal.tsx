@@ -14,8 +14,13 @@ import FormUpload from "./form-upload";
 import FormProvider from "./context/form-provider";
 import { User } from "@supabase/supabase-js";
 
-export default function FormUploadModal({ user }: { user: User | null }) {
-  
+export default function FormUploadModal({
+  user,
+  producer_id,
+}: {
+  user: User | null;
+  producer_id: string;
+}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -31,7 +36,7 @@ export default function FormUploadModal({ user }: { user: User | null }) {
           <DialogTitle>Sube tu beat</DialogTitle>
         </DialogHeader>
         <FormProvider>
-          <FormUpload user={user} />
+          <FormUpload user={user} producer_id={producer_id} />
         </FormProvider>
       </DialogContent>
     </Dialog>

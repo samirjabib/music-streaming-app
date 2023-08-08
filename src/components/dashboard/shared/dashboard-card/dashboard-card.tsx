@@ -16,7 +16,7 @@ export default function DashboardCard({
   return (
     <div
       className={cn(
-        "rounded-lg shadow-lg h-full min-h-[200px] bg-primary-foreground flex items-center justify-center relative",
+        "rounded-lg shadow-lg h-full min-h-[200px]  flex items-center justify-center relative bg-secondary",
         className
       )}
     >

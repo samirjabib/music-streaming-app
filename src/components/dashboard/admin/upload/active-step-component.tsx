@@ -7,9 +7,11 @@ import FormPublishBeat from "./form-publish-beat/form-publish-beat";
 export default function ActiveStepFormComponent({
   step,
   user,
+  producer_id,
 }: {
   step: number;
   user: User | null;
+  producer_id: string;
 }) {
   switch (step) {
     case 1:
@@ -19,7 +21,7 @@ export default function ActiveStepFormComponent({
     case 3:
       return <FormLicenseBeat />;
     case 4:
-      return <FormPublishBeat user={user} />;
+      return <FormPublishBeat user={user} producer_id={producer_id} />;
     default:
       return null;
   }

@@ -46,7 +46,8 @@ export default function FormInputKey({
               />
             </FormControl>
             <FormDescription>
-              Describe tu tipo de cuerpo de manera corta
+              Escibe la nota en que hiciste tu beat para poder facilitar la
+              grabacion
             </FormDescription>
             <FormMessage />
           </FormItem>
@@ -57,7 +58,7 @@ export default function FormInputKey({
         name="key.type"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Elige la nota</FormLabel>
+            <FormLabel>Tonalidad</FormLabel>
             <FormControl>
               <Select
                 instanceId="key_type"
@@ -78,7 +79,7 @@ export default function FormInputKey({
               />
             </FormControl>
             <FormDescription>
-              Describe tu tipo de cuerpo de manera corta
+              Si tu tonalidad es mayor o menor en la escala
             </FormDescription>
             <FormMessage />
           </FormItem>

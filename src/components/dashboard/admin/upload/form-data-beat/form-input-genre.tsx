@@ -28,7 +28,7 @@ export default function FormInputGenre({
       name="genre"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Tipo de cuerpo</FormLabel>
+          <FormLabel>Elige el genero</FormLabel>
           <FormControl>
             <Select
               instanceId="genre_type"
@@ -49,7 +49,7 @@ export default function FormInputGenre({
             />
           </FormControl>
           <FormDescription>
-            Describe tu tipo de cuerpo de manera corta
+            Escoge un genero entre los disponibles
           </FormDescription>
           <FormMessage />
         </FormItem>

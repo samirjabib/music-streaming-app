@@ -1,4 +1,6 @@
 "use client";
+import{ Toaster } from "react-hot-toast";
+
 import { FC, useEffect } from "react";
 
 import { usePathname } from "next/navigation";
@@ -24,6 +26,7 @@ const RootProvider: FC<ProviderRootProps> = ({ children }) => {
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
+        <Toaster />
       </ThemeProvider>
     </>
   );

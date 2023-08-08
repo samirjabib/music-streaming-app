@@ -22,7 +22,7 @@ export default function FormInputBpm({
       name="bpm"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Bpm</FormLabel>
+          <FormLabel>Elige un tempo(bpm)</FormLabel>
           <FormControl>
             <Input
               placeholder="Escribe el bpm de tu beat"

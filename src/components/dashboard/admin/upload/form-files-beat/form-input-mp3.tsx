@@ -34,7 +34,6 @@ export default function FormUploadMp3({
                 className=" py-2"
                 onChange={(event) => {
                   const file = handleFileChange(event);
-                  console.log(file, " this is the file on change");
                   field.onChange(file);
                 }}
                 accept=".mp3"

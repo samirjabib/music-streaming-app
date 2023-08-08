@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -9,10 +11,10 @@ import {
 
 import useFormUpload from "../hook/useFormUpload";
 
-import { Button, Form } from "@/design-system";
+import { Button, Form, Icons } from "@/design-system";
 import useFiles from "../form-files-beat/hook/useFiles";
 import FormCovertArtInput from "./form-cover-art-input";
-import FormVizualizerInput from "./form-vizualizer-input";
+// import FormVizualizerInput from "./form-vizualizer-input";
 import FormTagInput from "./form-tags-input";
 import { User } from "@supabase/auth-helpers-nextjs";
 import {
@@ -20,9 +22,19 @@ import {
   uploadMp3,
   uploadWav,
 } from "@/lib/db/types/mutations/beats";
+import { Beats } from "@/lib/db/types/collections";
+import { useState } from "react";
 
-export default function FormPublishBeat({ user }: { user: User | null }) {
+export default function FormPublishBeat({
+  user,
+  producer_id,
+}: {
+  user: User | null;
+  producer_id: string;
+}) {
   console.log(user, " user in form publish sheet");
+
+  const [isLoading, setIsLoading] = useState(false);
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
@@ -31,8 +43,6 @@ export default function FormPublishBeat({ user }: { user: User | null }) {
   const user_id = user?.id;
   const wavFile = formData.fileWav;
   const coverArt = formData.coverArt;
-
-  console.log(formData);
 
   const {
     handleFileChangeImage,
@@ -51,16 +61,46 @@ export default function FormPublishBeat({ user }: { user: User | null }) {
     mode: "onChange",
   });
 
+  const {
+    formState: { isSubmitting },
+  } = form;
+
   const onSubmit = async (data: FormPublishValues) => {
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
 
     //upload files to storage on supabase
-    const filePathMp3 = await uploadMp3({ mp3File, user_id });
+    const filePathMp3 = await uploadMp3({ mp3File, user_id, producer_id });
     const filePathWav = await uploadWav({ wavFile, user_id });
     const filePathCoverArt = await uploadCoverArt({ coverArt, user_id });
-    console.log(filePathMp3);
-    console.log(filePathWav);
-    console.log(filePathCoverArt);
+
+    //validate responses exists
+    if (!filePathCoverArt && !filePathMp3 && !filePathWav) {
+      return alert("Hubo un problema subiendo las imagenes");
+    }
+
+    const BEAT: any = {
+      beatname: formData.beatname,
+      bpm: formData.bpm,
+      category_id: "",
+      file_mp3: filePathMp3,
+      // file_wav: filePathWav,
+      tags: "",
+      license_id: "",
+      id: "",
+      user_id: "",
+    };
+
+    // toast.promise(upsertModel({ formData, user_id }), {
+    //   loading: formData ? "Actualizando modelo..." : "Creando modelo...",
+    //   success: () => {
+    //     return "Beat creado con exito 🥳";
+    //   },
+    //   error: (err) => {
+    //     return `${err.toString()}`;
+    //   },
+    // });
+
+    fetch("/api/revalidate?path=/dashboard/admin");
   };
 
   return (
@@ -79,7 +119,15 @@ export default function FormPublishBeat({ user }: { user: User | null }) {
           <Button variant={"ghost"} onClick={onHandleBack}>
             Atras
           </Button>
-          <Button type="submit">Publicar</Button>
+          <Button disabled={isLoading || isSubmitting} type="submit">
+            {!!isSubmitting && (
+              <Icons.spinner
+                className="mr-2 h-4 w-4 animate-spin"
+                aria-hidden="true"
+              />
+            )}
+            <>Subir cambios</>
+          </Button>
         </div>
       </form>
     </Form>

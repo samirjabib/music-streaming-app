@@ -8,7 +8,7 @@ export default function Desktopnavbar() {
       <>
         <div className="flex flex-row justify-between w-full">
           <div>
-            <Title as="h2" size={"sectionTitle"}>
+            <Title as="h2" size={"sectionTitle"} className="text-foreground">
               Dashboard BeatMaker
             </Title>
             <p className="text-muted-foreground">

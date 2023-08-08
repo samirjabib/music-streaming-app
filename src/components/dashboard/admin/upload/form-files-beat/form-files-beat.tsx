@@ -58,7 +58,7 @@ export default function FormFilesBeat() {
           ) : (
             <FormUploadMp3 form={form} handleFileChange={handleFileChangeMp3} />
           )}
-
+          {/* 
           {formData.fileWav ? (
             <div className="flex flex-row justify-between items-center">
               <p>{formData.fileWav.name}</p>
@@ -68,7 +68,7 @@ export default function FormFilesBeat() {
             </div>
           ) : (
             <FormUploadWav form={form} handleFileChange={handleFileChangeWav} />
-          )}
+          )} */}
           {/* {formData.fileZip ? (
             <div className="flex flex-row justify-between items-center">
               <p>{formData.fileZip.name}</p>

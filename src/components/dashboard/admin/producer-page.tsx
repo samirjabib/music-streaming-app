@@ -13,11 +13,17 @@ const SettingsSheetLazy = dynamic(
 );
 const FormUploadModal = dynamic(() => import("./upload/form-upload-modal"));
 
-export default function AdminPage({ user }: { user: User | null }) {
+export default function ProducerPage({
+  user,
+  producer_id,
+}: {
+  user: User | null;
+  producer_id: string;
+}) {
   return (
     <div className=" py-20">
       <DashboardGrid>
-        <FormUploadModal user={user} />
+        <FormUploadModal user={user} producer_id={producer_id} />
         <PaymentSheetLazy />
         <PlanSheetLazy />
         <SettingsSheetLazy />
