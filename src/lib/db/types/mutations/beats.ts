@@ -6,6 +6,23 @@ import { Database } from "../supabase";
 
 const supabase = createClientComponentClient<Database>();
 
+export async function uploadBeat({ beatData }: { beatData: {} }) {
+  try {
+    const { data: beat, error } = await supabase
+      .from("beats")
+      .insert(beatData)
+      .select();
+
+    if (error) {
+      return { error };
+    }
+
+    return { beat };
+  } catch (error) {
+    return { error };
+  }
+}
+
 export async function uploadMp3({
   mp3File,
   user_id,

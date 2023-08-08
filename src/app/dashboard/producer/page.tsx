@@ -14,7 +14,7 @@ export default async function Page() {
   return (
     <>
       <HeaderDashboard />
-      <ProducerPage user={user} />
+      <ProducerPage user={user} producer_id="1" />
     </>
   );
 }

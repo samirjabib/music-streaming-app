@@ -17,11 +17,7 @@ import FormCovertArtInput from "./form-cover-art-input";
 // import FormVizualizerInput from "./form-vizualizer-input";
 import FormTagInput from "./form-tags-input";
 import { User } from "@supabase/auth-helpers-nextjs";
-import {
-  uploadCoverArt,
-  uploadMp3,
-  uploadWav,
-} from "@/lib/db/types/mutations/beats";
+import { uploadMp3 } from "@/lib/db/types/mutations/beats";
 import { Beats } from "@/lib/db/types/collections";
 import { useState } from "react";
 
@@ -33,6 +29,8 @@ export default function FormPublishBeat({
   producer_id: string;
 }) {
   console.log(user, " user in form publish sheet");
+
+  console.log(producer_id);
 
   const [isLoading, setIsLoading] = useState(false);
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
@@ -70,11 +68,11 @@ export default function FormPublishBeat({
 
     //upload files to storage on supabase
     const filePathMp3 = await uploadMp3({ mp3File, user_id, producer_id });
-    const filePathWav = await uploadWav({ wavFile, user_id });
-    const filePathCoverArt = await uploadCoverArt({ coverArt, user_id });
+    // const filePathWav = await uploadWav({ wavFile, user_id });
+    // const filePathCoverArt = await uploadCoverArt({ coverArt, user_id });
 
     //validate responses exists
-    if (!filePathCoverArt && !filePathMp3 && !filePathWav) {
+    if (!filePathMp3) {
       return alert("Hubo un problema subiendo las imagenes");
     }
 
@@ -84,21 +82,20 @@ export default function FormPublishBeat({
       category_id: "",
       file_mp3: filePathMp3,
       // file_wav: filePathWav,
-      tags: "",
-      license_id: "",
-      id: "",
-      user_id: "",
+      tags: formData.tags,
+      license_id: "basic",
+      user_id: user_id,
     };
 
-    // toast.promise(upsertModel({ formData, user_id }), {
-    //   loading: formData ? "Actualizando modelo..." : "Creando modelo...",
-    //   success: () => {
-    //     return "Beat creado con exito 🥳";
-    //   },
-    //   error: (err) => {
-    //     return `${err.toString()}`;
-    //   },
-    // });
+    toast.promise(uploadBeat({ formData, user_id }), {
+      loading: BEAT ? "Actualizando modelo..." : "Creando modelo...",
+      success: () => {
+        return "Beat creado con exito 🥳";
+      },
+      error: (err) => {
+        return `${err.toString()}`;
+      },
+    });
 
     fetch("/api/revalidate?path=/dashboard/admin");
   };
