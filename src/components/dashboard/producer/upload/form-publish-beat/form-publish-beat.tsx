@@ -15,10 +15,14 @@ import { Button, Form, Icons } from "@/design-system";
 import useFiles from "../form-files-beat/hook/useFiles";
 import FormCovertArtInput from "./form-cover-art-input";
 // import FormVizualizerInput from "./form-vizualizer-input";
+
 import FormTagInput from "./form-tags-input";
 import { User } from "@supabase/auth-helpers-nextjs";
-import { uploadMp3 } from "@/lib/db/types/mutations/beats";
-import { Beats } from "@/lib/db/types/collections";
+import {
+  uploadBeat,
+  uploadCoverArt,
+  uploadMp3,
+} from "@/lib/db/types/mutations/beats";
 import { useState } from "react";
 
 export default function FormPublishBeat({
@@ -28,18 +32,13 @@ export default function FormPublishBeat({
   user: User | null;
   producer_id: string;
 }) {
-  console.log(user, " user in form publish sheet");
-
-  console.log(producer_id);
-
   const [isLoading, setIsLoading] = useState(false);
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
   //write this better later, i think is for the type on default form
   const mp3File = formData.fileMp3;
-  const user_id = user?.id;
-  const wavFile = formData.fileWav;
+  const user_id = user?.id as string;
   const coverArt = formData.coverArt;
 
   const {
@@ -54,7 +53,6 @@ export default function FormPublishBeat({
     defaultValues: {
       coverArt: formData?.coverArt || "",
       tags: formData?.tags || [],
-      // vizualizer: formData.vizualiser || "",
     },
     mode: "onChange",
   });
@@ -67,37 +65,38 @@ export default function FormPublishBeat({
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
 
     //upload files to storage on supabase
-    const filePathMp3 = await uploadMp3({ mp3File, user_id, producer_id });
-    // const filePathWav = await uploadWav({ wavFile, user_id });
-    // const filePathCoverArt = await uploadCoverArt({ coverArt, user_id });
+    const file_mp3 = await uploadMp3({ mp3File, user_id, producer_id });
+    const cover_art = await uploadCoverArt({
+      coverArt: formData.coverArt,
+      user_id,
+    });
 
-    //validate responses exists
-    if (!filePathMp3) {
-      return alert("Hubo un problema subiendo las imagenes");
-    }
 
-    const BEAT: any = {
+    console.log('run onsbmit')
+    const beatData: any = {
       beatname: formData.beatname,
       bpm: formData.bpm,
-      category_id: "",
-      file_mp3: filePathMp3,
-      // file_wav: filePathWav,
+      category_id: "2",
+      file_mp3,
+      cover_art,
       tags: formData.tags,
       license_id: "basic",
       user_id: user_id,
     };
 
-    toast.promise(uploadBeat({ formData, user_id }), {
-      loading: BEAT ? "Actualizando modelo..." : "Creando modelo...",
-      success: () => {
-        return "Beat creado con exito 🥳";
-      },
-      error: (err) => {
-        return `${err.toString()}`;
-      },
-    });
+    console.log(beatData, " this is a beat data");
 
-    fetch("/api/revalidate?path=/dashboard/admin");
+    // toast.promise(uploadBeat({ beatData }), {
+    //   loading: beatData ? "Actualizando modelo..." : "Creando modelo...",
+    //   success: () => {
+    //     return "Beat creado con exito 🥳";
+    //   },
+    //   error: (err) => {
+    //     return `${err.toString()}`;
+    //   }
+    // });
+
+    // fetch("/api/revalidate?path=/dashboard/producer");
   };
 
   return (

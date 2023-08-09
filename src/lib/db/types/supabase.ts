@@ -39,13 +39,12 @@ export interface Database {
           beatname: string | null
           bpm: string | null
           category_id: string | null
+          cover_art: string | null
           created_at: string | null
           file_mp3: string | null
-          file_wav: string | null
           id: string
           license_id: string | null
           tags: Json | null
-          tempo: string | null
           updated_at: string | null
           user_id: string | null
         }
@@ -53,13 +52,12 @@ export interface Database {
           beatname?: string | null
           bpm?: string | null
           category_id?: string | null
+          cover_art?: string | null
           created_at?: string | null
           file_mp3?: string | null
-          file_wav?: string | null
           id?: string
           license_id?: string | null
           tags?: Json | null
-          tempo?: string | null
           updated_at?: string | null
           user_id?: string | null
         }
@@ -67,13 +65,12 @@ export interface Database {
           beatname?: string | null
           bpm?: string | null
           category_id?: string | null
+          cover_art?: string | null
           created_at?: string | null
           file_mp3?: string | null
-          file_wav?: string | null
           id?: string
           license_id?: string | null
           tags?: Json | null
-          tempo?: string | null
           updated_at?: string | null
           user_id?: string | null
         }
