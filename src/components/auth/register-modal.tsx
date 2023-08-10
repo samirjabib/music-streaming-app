@@ -33,31 +33,25 @@ import {
   Icons,
 } from "@/design-system";
 
-import {
-  RegisterBeatmakerSchemaValues,
-  registerBeatmakerSchema,
-} from "./validators/register";
+import { RegisterUserValues, registerUserSchema } from "./validators/register";
+import RegisterProducerForm from "./register-producer-form";
+import RegisterArtistForm from "./register-artist-form";
 
 export default function RegisterModal() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  // const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const supabase = createClientComponentClient();
 
-  // const handleCheckbox = () => {
-  //   setIsChecked(!isChecked);
-  // };
-
-  const form = useForm<RegisterBeatmakerSchemaValues>({
-    resolver: zodResolver(registerBeatmakerSchema),
+  const form = useForm<RegisterUserValues>({
+    resolver: zodResolver(registerUserSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async (data: RegisterBeatmakerSchemaValues) => {
+  const onSubmit = async (data: RegisterUserValues) => {
     console.log(data);
 
     try {
@@ -92,99 +86,40 @@ export default function RegisterModal() {
         <DialogHeader></DialogHeader>
         <Tabs defaultValue="account" className="w-[400px] min-h-[400px] mt-10">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="account">Register</TabsTrigger>
-            <TabsTrigger value="password">Recovery Account</TabsTrigger>
+            <TabsTrigger value="account">Artista</TabsTrigger>
+            <TabsTrigger value="password">Beatmaker</TabsTrigger>
           </TabsList>
           <TabsContent value="account">
             <Card className="border-none">
               <CardHeader>
-                <CardTitle>Account</CardTitle>
+                <CardTitle>
+                  Registrate como <span className="text-primary">artista</span>
+                </CardTitle>
                 <CardDescription>
-                  Create your account here for access to funcionality
+                  Crea tu cuenta y accede a las funcionalidades de la plataforma
+                  para ayudarte en tu proceso creativo.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Nombre beat</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Escoge un email"
-                              type="email"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormDescription>
-                            Escribe el nombre de tu beat.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Escoge una contraseña</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="password"
-                              placeholder="Escoge un nombre para tu beat"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormDescription>
-                            Escribe el nombre de tu beat.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" disabled={isSubmitting}>
-                      {isSubmitting && (
-                        <Icons.spinner
-                          className="mr-2 h-4 w-4 animate-spin"
-                          aria-hidden="true"
-                        />
-                      )}
-                      <>Registrarse</>
-                    </Button>
-
-                    {isSuccess && (
-                      <p className="mt-7">
-                        Enviamos un correo de verificación, revisa la bandeja de
-                        spam en caso de que no lo veas.
-                      </p>
-                    )}
-                  </form>
-                </Form>
+                <RegisterArtistForm />
               </CardContent>
-              <CardFooter></CardFooter>
             </Card>
           </TabsContent>
           <TabsContent value="password">
             <Card className="border-none">
               <CardHeader>
-                <CardTitle>Recovery Account</CardTitle>
+                <CardTitle>
+                  Registrate como{" "}
+                  <span className="text-primary">beatmaker</span>
+                </CardTitle>
                 <CardDescription>
-                  Recovery your account here if you don't remember
+                  Registrate como beatmaker y accede a funcionalidades para
+                  ayudarte a gestionar tus productos digitales.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="username">Email</Label>
-                  <Input id="email" placeholder="Put your email here" />
-                </div>
+                <RegisterProducerForm />
               </CardContent>
-              <CardFooter>
-                <Button>Save password</Button>
-              </CardFooter>
             </Card>
           </TabsContent>
         </Tabs>

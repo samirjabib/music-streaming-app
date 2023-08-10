@@ -20,23 +20,59 @@ import {
   CardContent,
   CardFooter,
   Separator,
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  Icons,
 } from "@/design-system";
 
-import { useRouter } from "next/navigation";
 import LoginProviders from "./login-providers";
 import { useState } from "react";
+import { LoginSchemaValues, loginSchema } from "./validators/login";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { Database } from "@/lib/db/types/supabase";
 
 export default function AuthModal() {
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient<Database>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const loginWithGoogle = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
         redirectTo: "http://localhost:3000/api/auth/callback",
-        
       },
     });
+  };
+
+  const router = useRouter();
+
+  const form = useForm<LoginSchemaValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (data: LoginSchemaValues) => {
+    setIsSubmitting(true);
+    const res = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    console.log(res);
+
+    // if (res?.data.user) {
+    //   router.refresh();
+    // }
+    setIsSubmitting(false);
   };
 
   return (
@@ -56,27 +92,69 @@ export default function AuthModal() {
                 <CardTitle>Login</CardTitle>
                 <CardDescription>Login with your account</CardDescription>
               </CardHeader>
-              <CardContent>
+              {/* <CardContent>
+                implement this type of login later
                 <LoginProviders loginWithGoogle={loginWithGoogle} />
-              </CardContent>
+              </CardContent> */}
               <Separator className="mb-4" />
               <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="username">Email</Label>
-                  <Input id="email" placeholder="Put your email here" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">Password</Label>
-                  <Input
-                    id="new"
-                    type="password"
-                    placeholder="Put a password"
-                  />
-                </div>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-4"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Put a email..."
+                              type="email"
+                              {...field}
+                            />
+                          </FormControl>
+                          {/* <FormDescription>
+                            Escribe el nombre de tu beat.
+                          </FormDescription> */}
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="password"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Password</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="password"
+                              placeholder="Put a password..."
+                              {...field}
+                            />
+                          </FormControl>
+                          {/* <FormDescription>
+                            Escribe el nombre de tu beat.
+                          </FormDescription> */}
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit" disabled={isSubmitting}>
+                      {isSubmitting && (
+                        <Icons.spinner
+                          className="mr-2 h-4 w-4 animate-spin"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <>Submit</>
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
-              <CardFooter>
-                <Button>Submit</Button>
-              </CardFooter>
             </Card>
           </TabsContent>
           <TabsContent value="password">

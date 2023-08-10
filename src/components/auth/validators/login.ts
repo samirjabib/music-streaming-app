@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 //register schema model
-export const registerUserSchema = z.object({
+export const loginSchema = z.object({
   email: z.string().email({
     message: "Ingresa un email válido por favor",
   }),
@@ -14,4 +14,4 @@ export const registerUserSchema = z.object({
     }),
 });
 
-export type RegisterUserValues = z.infer<typeof registerUserSchema>;
+export type LoginSchemaValues = z.infer<typeof loginSchema>;
