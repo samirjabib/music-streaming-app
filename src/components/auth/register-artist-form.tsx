@@ -43,11 +43,13 @@ export default function RegisterArtistForm() {
         options: {
           emailRedirectTo: `${location.origin}/api/auth/callback`,
           data: {
-            role: "producer",
+            role: "artist",
           },
         },
       });
       setIsSubmitting(false);
+
+      console.log(res);
 
       if (!res.error) {
         setIsSuccess(true);
@@ -68,7 +70,12 @@ export default function RegisterArtistForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Escoge un email" type="email" {...field} />
+                <Input
+                  placeholder="Escoge un email"
+                  type="email"
+                  {...field}
+                  autoComplete="off"
+                />
               </FormControl>
               <FormDescription>
                 Escoge un correo electronico para tu cuenta
@@ -87,6 +94,7 @@ export default function RegisterArtistForm() {
                 <Input
                   type="password"
                   placeholder="Escoge una contraseña"
+                  autoComplete="off"
                   {...field}
                 />
               </FormControl>

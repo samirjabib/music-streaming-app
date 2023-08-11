@@ -1,7 +1,18 @@
 "use client";
-import { ThemeDropDown, Title } from "@/design-system";
+import { ThemeDropDown, Title, UserDropDown } from "@/design-system";
+import { User } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function Desktopnavbar() {
+export default function Desktopnavbar({ user }: { user: User | null }) {
+  console.log("user in desktopnavbar", user);
+
+  const router = useRouter();
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  });
   return (
     <>
       {/* header desktop */}
@@ -15,8 +26,10 @@ export default function Desktopnavbar() {
               Maneja los ajustes de tu cuenta y tus preferencias.
             </p>
           </div>
-
-          <ThemeDropDown />
+          <div className="flex items-center gap-x-4">
+            <UserDropDown />
+            <ThemeDropDown />
+          </div>
         </div>
       </>
     </>

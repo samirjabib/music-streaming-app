@@ -3,11 +3,8 @@
 import * as React from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 
-import {
-  User,
-  createClientComponentClient,
-} from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { redirect, useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,10 +14,9 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-const UserDropDown = ({ user }: { user?: User }) => {
+const UserDropDown = () => {
   const router = useRouter();
 
-  // Create a Supabase client configured to use cookies
   const supabase = createClientComponentClient();
 
   const signOut = async () => {
@@ -38,13 +34,10 @@ const UserDropDown = ({ user }: { user?: User }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem>
-          <Link href="/dashboard/admin">Dashboard</Link>
+          <Link href="/dashboard/producer/account">Dashboard</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/dashboard/admin">Cuenta</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link href="/dashboard/admin">Dashboard</Link>
+          <Link href="/dashboard/admin">Favoritos</Link>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={signOut}>Cerrar sesión</DropdownMenuItem>
       </DropdownMenuContent>

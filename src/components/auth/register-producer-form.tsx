@@ -68,7 +68,12 @@ export default function RegisterProducerForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Escoge un email" type="email" {...field} />
+                <Input
+                  placeholder="Escoge un email"
+                  type="email"
+                  {...field}
+                  autoComplete="off"
+                />
               </FormControl>
               <FormDescription>
                 Escoge un correo electronico para tu cuenta
@@ -85,6 +90,7 @@ export default function RegisterProducerForm() {
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input
+                  autoComplete="off"
                   type="password"
                   placeholder="Escoge una contraseña"
                   {...field}

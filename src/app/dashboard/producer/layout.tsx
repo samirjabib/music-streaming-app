@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -19,11 +20,9 @@ export default async function Layout({ children }: DashboardLayoutProps) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user?.user_metadata.role, "im the user");
-
-  //   if (user?.id && user?.user_metadata.role !== "model") {
-  //     redirect("/");
-  //   }
+  if (user?.id && user?.user_metadata.role !== "producer") {
+    redirect("/");
+  }
 
   return <>{children}</>;
 }

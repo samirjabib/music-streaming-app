@@ -22,7 +22,6 @@ export default async function Header({ className }: { className?: string }) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user);
   return (
     <div className={cn("h-fit py-3 ", className)}>
       <div className="w-full flex items-center justify-between">

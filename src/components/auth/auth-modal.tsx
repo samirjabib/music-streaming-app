@@ -27,6 +27,7 @@ import {
   FormControl,
   FormMessage,
   Icons,
+  FormDescription,
 } from "@/design-system";
 
 import LoginProviders from "./login-providers";
@@ -67,11 +68,12 @@ export default function AuthModal() {
       password: data.password,
     });
 
-    console.log(res);
+    console.log(res.data.user);
 
-    // if (res?.data.user) {
-    //   router.refresh();
-    // }
+    if (res?.data.user) {
+      console.log("run refresh");
+      router.refresh();
+    }
     setIsSubmitting(false);
   };
 
@@ -111,14 +113,12 @@ export default function AuthModal() {
                           <FormLabel>Email</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder="Put a email..."
+                              placeholder="Ingresa una direccion de correo electronico..."
                               type="email"
                               {...field}
                             />
                           </FormControl>
-                          {/* <FormDescription>
-                            Escribe el nombre de tu beat.
-                          </FormDescription> */}
+                          <FormDescription>Ingresa tu email</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -136,9 +136,9 @@ export default function AuthModal() {
                               {...field}
                             />
                           </FormControl>
-                          {/* <FormDescription>
-                            Escribe el nombre de tu beat.
-                          </FormDescription> */}
+                          <FormDescription>
+                            Ingresa tu contraseña
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}

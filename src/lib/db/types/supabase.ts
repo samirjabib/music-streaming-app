@@ -34,220 +34,50 @@ export interface Database {
   }
   public: {
     Tables: {
-      beats: {
+      artists: {
         Row: {
-          beatname: string | null
-          bpm: string | null
-          category_id: string | null
-          cover_art: string | null
-          created_at: string | null
-          file_mp3: string | null
-          id: string
-          license_id: string | null
-          tags: Json | null
-          updated_at: string | null
-          user_id: string | null
-        }
-        Insert: {
-          beatname?: string | null
-          bpm?: string | null
-          category_id?: string | null
-          cover_art?: string | null
-          created_at?: string | null
-          file_mp3?: string | null
-          id?: string
-          license_id?: string | null
-          tags?: Json | null
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          beatname?: string | null
-          bpm?: string | null
-          category_id?: string | null
-          cover_art?: string | null
-          created_at?: string | null
-          file_mp3?: string | null
-          id?: string
-          license_id?: string | null
-          tags?: Json | null
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "beats_category_id_fkey"
-            columns: ["category_id"]
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "beats_license_id_fkey"
-            columns: ["license_id"]
-            referencedRelation: "licenses"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "beats_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      categories: {
-        Row: {
-          created_at: string | null
-          description: string | null
-          id: string
-          name: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          description?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          description?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      files: {
-        Row: {
-          file_path: string | null
+          created_at: string
           id: string
           user_id: string
         }
         Insert: {
-          file_path?: string | null
+          created_at?: string
           id?: string
           user_id: string
         }
         Update: {
-          file_path?: string | null
+          created_at?: string
           id?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "files_user_id_fkey"
+            foreignKeyName: "artists_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
       }
-      licenses: {
-        Row: {
-          created_at: string | null
-          id: string
-          license_type: string | null
-          price: string | null
-          usage_rights: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          license_type?: string | null
-          price?: string | null
-          usage_rights?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          license_type?: string | null
-          price?: string | null
-          usage_rights?: string | null
-        }
-        Relationships: []
-      }
-      moods: {
-        Row: {
-          created_at: string | null
-          description: string | null
-          id: string
-          name: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          description?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          description?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
       producers: {
         Row: {
-          bio: string | null
           created_at: string
           id: string
           user_id: string | null
-          username: string | null
         }
         Insert: {
-          bio?: string | null
           created_at?: string
           id?: string
           user_id?: string | null
-          username?: string | null
         }
         Update: {
-          bio?: string | null
           created_at?: string
           id?: string
           user_id?: string | null
-          username?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "producers_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      users: {
-        Row: {
-          created_at: string | null
-          id: string
-          update_at: string | null
-          user_id: string | null
-          username: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          update_at?: string | null
-          user_id?: string | null
-          username?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          update_at?: string | null
-          user_id?: string | null
-          username?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "users_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
             referencedColumns: ["id"]
@@ -262,16 +92,7 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      pricing_plan_interval: "day" | "week" | "month" | "year"
-      pricing_type: "one_time" | "recurring"
-      subscription_status:
-        | "trialing"
-        | "active"
-        | "canceled"
-        | "incomplete"
-        | "incomplete_expired"
-        | "past_due"
-        | "unpaid"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
