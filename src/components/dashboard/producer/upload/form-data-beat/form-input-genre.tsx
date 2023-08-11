@@ -8,11 +8,6 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
 } from "@/design-system";
 import { genreAvalaible } from "../utils/constants";
 import { FormBeatValues } from "../../types/form-validators-types";
@@ -34,8 +29,13 @@ export default function FormInputGenre({
               instanceId="genre_type"
               id="genre_type"
               styles={{
-                control: (baseStyles, state) => ({
+                control: (baseStyles, { menuIsOpen }) => ({
                   ...baseStyles,
+                  boxShadow: "none",
+                  "&:hover": {
+                    borderColor: menuIsOpen ? "#ea580c" : "",
+                  },
+                  borderColor: menuIsOpen ? "#ea580c" : "",
                 }),
               }}
               className="select-component-container"

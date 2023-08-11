@@ -59,6 +59,49 @@ export interface Database {
           }
         ]
       }
+      beats: {
+        Row: {
+          beatname: string | null
+          bpm: string | null
+          cover_art: string | null
+          created_at: string
+          file_mp3: Json | null
+          id: number
+          license_id: string | null
+          tags: string[] | null
+          user_id: string | null
+        }
+        Insert: {
+          beatname?: string | null
+          bpm?: string | null
+          cover_art?: string | null
+          created_at?: string
+          file_mp3?: Json | null
+          id?: number
+          license_id?: string | null
+          tags?: string[] | null
+          user_id?: string | null
+        }
+        Update: {
+          beatname?: string | null
+          bpm?: string | null
+          cover_art?: string | null
+          created_at?: string
+          file_mp3?: Json | null
+          id?: number
+          license_id?: string | null
+          tags?: string[] | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "beats_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       producers: {
         Row: {
           created_at: string

@@ -11,12 +11,12 @@ import {
 } from "@/design-system";
 
 import { notes, notes_type } from "../utils/constants";
-import { FormBeatValues } from "../../types/form-validators-types";
+import { FormFilesValues } from "../../types";
 
 export default function FormInputKey({
   form,
 }: {
-  form: UseFormReturn<FormBeatValues>;
+  form: UseFormReturn<FormFilesValues>;
 }) {
   return (
     <>
@@ -31,8 +31,13 @@ export default function FormInputKey({
                 instanceId="key"
                 id="key"
                 styles={{
-                  control: (baseStyles, state) => ({
+                  control: (baseStyles, { menuIsOpen }) => ({
                     ...baseStyles,
+                    boxShadow: 'none',
+                    '&:hover': {
+                      borderColor: menuIsOpen ? '#ea580c' : '',
+                    },
+                    borderColor: menuIsOpen ? '#ea580c' : '',
                   }),
                 }}
                 className="select-component-container"
@@ -64,8 +69,13 @@ export default function FormInputKey({
                 instanceId="key_type"
                 id="key_type"
                 styles={{
-                  control: (baseStyles, state) => ({
+                  control: (baseStyles, { menuIsOpen }) => ({
                     ...baseStyles,
+                    boxShadow: 'none',
+                    '&:hover': {
+                      borderColor: menuIsOpen ? '#ea580c' : '',
+                    },
+                    borderColor: menuIsOpen ? '#ea580c' : '',
                   }),
                 }}
                 className="select-component-container"

@@ -10,12 +10,12 @@ import {
 
 import { UseFormReturn } from "react-hook-form";
 import { Button } from "@/design-system";
-import { FormLicenseValues } from "../../types";
+import { FormPublishValues } from "../../types";
 
 export default function FormInputLicenses({
   form,
 }: {
-  form: UseFormReturn<FormLicenseValues>;
+  form: UseFormReturn<FormPublishValues>;
 }) {
   return (
     <>

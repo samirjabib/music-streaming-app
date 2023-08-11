@@ -15,6 +15,7 @@ import FormUploadZip from "./form-input-zip";
 
 import { Button, Form } from "@/design-system";
 import useFiles from "./hook/useFiles";
+import FormInputKey from "./form-input-key";
 
 export default function FormFilesBeat() {
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
@@ -33,7 +34,10 @@ export default function FormFilesBeat() {
     resolver: zodResolver(formFileBeat),
     defaultValues: {
       fileMp3: formData.fileMp3,
-      fileWav: formData.fileWav,
+      key: {
+        key: formData.key.key,
+        type: formData.key.type,
+      },
     },
     mode: "onChange",
   });
@@ -58,6 +62,8 @@ export default function FormFilesBeat() {
           ) : (
             <FormUploadMp3 form={form} handleFileChange={handleFileChangeMp3} />
           )}
+          <FormInputKey form={form} />
+
           {/* 
           {formData.fileWav ? (
             <div className="flex flex-row justify-between items-center">

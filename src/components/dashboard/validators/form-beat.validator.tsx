@@ -11,6 +11,13 @@ export const formDataBeat = z.object({
     }),
   genre: z.string().min(2, { message: "Necesitas seleccionar un genero" }),
   bpm: z.string().min(2).max(10),
+});
+
+//TODO:fix this custom validate on zod
+export const formFileBeat = z.object({
+  fileMp3: z.custom<File>((v) => v instanceof File, {
+    message: "Archivo en mp3 es requerido",
+  }),
   key: z.object({
     key: z.string().min(1, {
       message: "Necesitas seleccionar un nota",
@@ -21,43 +28,15 @@ export const formDataBeat = z.object({
   }),
 });
 
-//TODO:fix this custom validate on zod
-export const formFileBeat = z.object({
-  fileMp3: z.custom<File>((v) => v instanceof File, {
-    message: "Archivo en mp3 es requerido",
-  }),
-  // fileWav: z.custom<File>((v) => v instanceof File, {
-  //   message: "Archivo en Wav es requerido",
-  // }),
-  // fileZip: z.custom<File>((v) => v instanceof File, {
-  //   message: "Archivo en Zip(stems) es requerido",
-  // }),
-});
-
-export const formLicensesBeat = z.object({
-  basic: z.string().min(1, {
-    message: "Debes pasar un valor para la licencia basica",
-  }),
-  // premium: z.string().min(1, {
-  //   message: "Debes pasar un valor para la licencia premium",
-  // }),
-  // pro: z.string().min(1, {
-  //   message: "Debes pasar un valor para la licencia pro",
-  // }),
-  // exclusive: z.string().min(1, {
-  //   message: "Debes pasar un valor para la licencia exclusiva",
-  // }),
-});
-
 export const formPublishBeat = z.object({
-  //desactive visualizer for now, for save space in the storage in demo
   coverArt: z.custom<File>((v) => v instanceof File, {
     message: "Es necesario un cover art",
   }),
-  // vizualizer: z.custom<File>((v) => v instanceof File, {
-  //   message: "Es necesario un visualizer",
-  // }),
+
   tags: z.string().array().nonempty({
     message: "los tags no pueden estar vacios",
+  }),
+  basic: z.string().min(1, {
+    message: "Debes pasar un valor para la licencia basica",
   }),
 });

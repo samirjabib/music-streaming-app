@@ -29,8 +29,8 @@ export default function FormUploadModal({
         </div>
       </DialogTrigger>
       <DialogContent
-        className="w-[95%]  md:w-full py-12  flex flex-col  rounded-lg top-1/2 "
-        position="top"
+        className=" w-[90%]  h-5/5 md:w-full py-12  flex flex-col  rounded-lg  "
+        position="default"
       >
         <DialogHeader className="mb-4">
           <DialogTitle>Sube tu beat</DialogTitle>

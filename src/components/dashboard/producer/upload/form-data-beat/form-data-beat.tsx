@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import FormInputName from "./form-input-name";
 import FormInputGenre from "./form-input-genre";
 import FormInputBpm from "./form-input-bpm";
-import FormInputKey from "./form-input-key";
+import FormInputKey from "../form-files-beat/form-input-key";
 import { Button, Form } from "@/design-system";
 import { formDataBeat } from "@/components/dashboard/validators";
 import useFormUpload from "../hook/useFormUpload";
@@ -22,10 +22,6 @@ export default function FormDataBeat() {
       beatname: formData.beatname,
       bpm: formData.bpm,
       genre: formData.genre,
-      key: {
-        key: formData.key.key,
-        type: formData.key.type,
-      },
     },
     mode: "onChange",
   });
@@ -45,12 +41,8 @@ export default function FormDataBeat() {
         <FormInputName form={form} />
         <FormInputGenre form={form} />
         <FormInputBpm form={form} />
-        <FormInputKey form={form} />
 
         <div className="flex flex-row justify-end  w-full gap-2 ">
-          <Button variant={"ghost"} onClick={onHandleBack}>
-            Atras
-          </Button>
           <Button type="submit">Siguiente</Button>
         </div>
       </form>

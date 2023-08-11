@@ -173,7 +173,5 @@
     @apply bg-secondary text-foreground border-none shadow-lg
   }
 
-  .tags-container .react-tagsinput-input--focused{
-    @apply border-foreground
-  }
+ 
 }

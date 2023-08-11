@@ -24,6 +24,7 @@ import {
   uploadMp3,
 } from "@/lib/db/types/mutations/beats";
 import { useState } from "react";
+import FormInputLicenses from "./form-input-licenses";
 
 export default function FormPublishBeat({
   user,
@@ -53,6 +54,7 @@ export default function FormPublishBeat({
     defaultValues: {
       coverArt: formData?.coverArt || "",
       tags: formData?.tags || [],
+      basic: formData?.basic || "",
     },
     mode: "onChange",
   });
@@ -71,8 +73,7 @@ export default function FormPublishBeat({
       user_id,
     });
 
-
-    console.log('run onsbmit')
+    console.log("run onsbmit");
     const beatData: any = {
       beatname: formData.beatname,
       bpm: formData.bpm,
@@ -106,6 +107,8 @@ export default function FormPublishBeat({
           form={form}
           handleFileChange={handleFileChangeImage}
         />
+        <FormInputLicenses form={form} />
+
         {/* <FormVizualizerInput
           form={form}
           handleFileChange={handleFileChangeVideo}
