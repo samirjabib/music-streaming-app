@@ -39,6 +39,9 @@ export default function FormPublishBeat({
   const { formData, onHandleBack, onHandleNext, setFormData, step } =
     useFormUpload();
 
+
+    console.log(formData)
+
   //write this better later, i think is for the type on default form
   const file_mp3 = formData.fileMp3;
   const user_id = user?.id as string;
@@ -68,27 +71,20 @@ export default function FormPublishBeat({
   const onSubmit = async (data: FormPublishValues) => {
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
 
-    //upload files to storage on supabase
-    // const file_mp3 = await uploadMp3({ mp3File, user_id, producer_id });
-    // const cover_art = await uploadCoverArt({
-    //   coverArt: formData.coverArt,
-    //   user_id,
-    // });
-
     const beatData: BeatDataPayload = {
       beatname: formData.beatname,
       bpm: formData.bpm,
       genre: formData.genre,
-      tags: formData.tags,
-      license_basic: formData.basic,
+      tags: data.tags,
+      license_basic: data.basic,
       key: {
         key: formData.key.key,
         type: formData.key.type,
       },
     };
 
-    toast.promise(uploadBeat({ user_id, beatData, file_mp3, cover_art }), {
-      loading: beatData ? "Beat actualizado" : "Creando modelo...",
+    toast.promise(uploadBeat({ user_id, beatData, file_mp3, cover_art:data.coverArt }), {
+      loading: "Creando beat...",
       success: () => {
         return "Beat creado con exito 🥳";
       },
