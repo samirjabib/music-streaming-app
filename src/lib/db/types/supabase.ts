@@ -102,34 +102,68 @@ export interface Database {
           }
         ]
       }
-      files: {
+      cover_art: {
         Row: {
           beat_id: string
           file_path: string | null
-          id: number
+          id: string
           user_id: string
         }
         Insert: {
           beat_id: string
           file_path?: string | null
-          id?: number
+          id?: string
           user_id: string
         }
         Update: {
           beat_id?: string
           file_path?: string | null
-          id?: number
+          id?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "files_beat_id_fkey"
+            foreignKeyName: "cover_art_beat_id_fkey"
             columns: ["beat_id"]
             referencedRelation: "beats"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "files_user_id_fkey"
+            foreignKeyName: "cover_art_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      files_beat: {
+        Row: {
+          beat_id: string
+          file_path_mp3: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          beat_id: string
+          file_path_mp3?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          beat_id?: string
+          file_path_mp3?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "files_beat_beat_id_fkey"
+            columns: ["beat_id"]
+            referencedRelation: "beats"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "files_beat_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
             referencedColumns: ["id"]

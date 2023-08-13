@@ -1,7 +1,14 @@
-export default function HomeHero() {
+import { Beat } from "@/lib/db/types/collections";
+import HomeBeatItem from "./home-beat-item";
+
+export default function HomeHero({ beats }: { beats: Beat[] }) {
+  console.log(beats);
+
   return (
     <div className="">
-      <div />
+      {beats.map((beat) => (
+        <HomeBeatItem beat={beat} />
+      ))}
     </div>
   );
 }

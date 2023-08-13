@@ -7,6 +7,21 @@ import { BeatDataPayload } from "@/components/dashboard/producer/types";
 
 const supabase = createClientComponentClient<Database>();
 
+/*************************** Queries *******************************/
+
+export async function getBeatFiles({ beat_id }: { beat_id: string }) {
+  const { data, error } = await supabase
+    .from("files")
+    .select("*")
+    .eq("beat_id", beat_id);
+
+  if (error) {
+    return { error };
+  }
+
+  return data;
+}
+
 //mutationes
 export async function uploadBeat({
   beatData,
@@ -79,16 +94,14 @@ export async function uploadMp3({
       .from(`producers`)
       .getPublicUrl(`${user_id}/beats/${fileMp3Data.path}`);
 
-    console.log(mp3PathFile, " RUN NOW");
-
     const payloadFileData = {
-      file_path: mp3PathFile,
+      file_path_mp3: mp3PathFile,
       user_id,
       beat_id,
     };
 
     const { data: dataMp3, error: errorMp3 } = await supabase
-      .from("files")
+      .from("files_beat")
       .insert(payloadFileData)
       .select();
 
@@ -137,7 +150,7 @@ export async function uploadCoverArt({
     };
 
     const { data: dataCoverArt, error: errorCoverArt } = await supabase
-      .from("files")
+      .from("cover_art")
       .insert(dataFile)
       .select();
 

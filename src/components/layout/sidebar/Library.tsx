@@ -13,7 +13,7 @@ const Library: React.FC = () => {
         <div className="inline-flex items-center gap-x-2">
           <Icons.listMusic className="text-white/60" size={26} />
           <p className=" font-medium text-md text-white/60 transition-all hover:text-white">
-            Your Library
+            Añadir cancion
           </p>
         </div>
         <Icons.plus
