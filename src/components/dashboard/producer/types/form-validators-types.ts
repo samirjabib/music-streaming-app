@@ -10,3 +10,15 @@ export type CombinedFormValues =
   | FormBeatValues
   | FormFilesValues
   | FormPublishValues;
+
+export type BeatDataPayload = {
+  beatname: string;
+  bpm: string;
+  tags: string[];
+  license_basic: string;
+  genre: string;
+  key: {
+    key: string;
+    type: string;
+  };
+};

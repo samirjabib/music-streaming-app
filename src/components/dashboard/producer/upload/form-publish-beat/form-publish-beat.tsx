@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { formPublishBeat } from "@/components/dashboard/validators";
 import {
+  BeatDataPayload,
   CombinedFormValues,
   FormPublishValues,
 } from "../../types/form-validators-types";
@@ -25,6 +26,7 @@ import {
 } from "@/lib/db/types/mutations/beats";
 import { useState } from "react";
 import FormInputLicenses from "./form-input-licenses";
+import { date } from "zod";
 
 export default function FormPublishBeat({
   user,
@@ -38,9 +40,9 @@ export default function FormPublishBeat({
     useFormUpload();
 
   //write this better later, i think is for the type on default form
-  const mp3File = formData.fileMp3;
+  const file_mp3 = formData.fileMp3;
   const user_id = user?.id as string;
-  const coverArt = formData.coverArt;
+  const cover_art = formData.coverArt;
 
   const {
     handleFileChangeImage,
@@ -67,35 +69,33 @@ export default function FormPublishBeat({
     setFormData((prev: CombinedFormValues) => ({ ...prev, ...data }));
 
     //upload files to storage on supabase
-    const file_mp3 = await uploadMp3({ mp3File, user_id, producer_id });
-    const cover_art = await uploadCoverArt({
-      coverArt: formData.coverArt,
-      user_id,
-    });
+    // const file_mp3 = await uploadMp3({ mp3File, user_id, producer_id });
+    // const cover_art = await uploadCoverArt({
+    //   coverArt: formData.coverArt,
+    //   user_id,
+    // });
 
-    console.log("run onsbmit");
-    const beatData: any = {
+    const beatData: BeatDataPayload = {
       beatname: formData.beatname,
       bpm: formData.bpm,
-      category_id: "2",
-      file_mp3,
-      cover_art,
+      genre: formData.genre,
       tags: formData.tags,
-      license_id: "basic",
-      user_id: user_id,
+      license_basic: formData.basic,
+      key: {
+        key: formData.key.key,
+        type: formData.key.type,
+      },
     };
 
-    console.log(beatData, " this is a beat data");
-
-    // toast.promise(uploadBeat({ beatData }), {
-    //   loading: beatData ? "Actualizando modelo..." : "Creando modelo...",
-    //   success: () => {
-    //     return "Beat creado con exito 🥳";
-    //   },
-    //   error: (err) => {
-    //     return `${err.toString()}`;
-    //   }
-    // });
+    toast.promise(uploadBeat({ user_id, beatData, file_mp3, cover_art }), {
+      loading: beatData ? "Beat actualizado" : "Creando modelo...",
+      success: () => {
+        return "Beat creado con exito 🥳";
+      },
+      error: (err) => {
+        return `${err.toString()}`;
+      },
+    });
 
     // fetch("/api/revalidate?path=/dashboard/producer");
   };
@@ -108,11 +108,6 @@ export default function FormPublishBeat({
           handleFileChange={handleFileChangeImage}
         />
         <FormInputLicenses form={form} />
-
-        {/* <FormVizualizerInput
-          form={form}
-          handleFileChange={handleFileChangeVideo}
-        /> */}
         <FormTagInput form={form} />
         <div className="flex flex-row justify-end  w-full gap-2 ">
           <Button variant={"ghost"} onClick={onHandleBack}>

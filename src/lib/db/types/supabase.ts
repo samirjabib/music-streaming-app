@@ -63,39 +63,73 @@ export interface Database {
         Row: {
           beatname: string | null
           bpm: string | null
-          cover_art: string | null
           created_at: string
-          file_mp3: Json | null
-          id: number
-          license_id: string | null
-          tags: string[] | null
+          genre: string | null
+          id: string
+          key: Json | null
+          license_basic: string | null
+          tags: string[]
           user_id: string | null
         }
         Insert: {
           beatname?: string | null
           bpm?: string | null
-          cover_art?: string | null
           created_at?: string
-          file_mp3?: Json | null
-          id?: number
-          license_id?: string | null
-          tags?: string[] | null
+          genre?: string | null
+          id?: string
+          key?: Json | null
+          license_basic?: string | null
+          tags: string[]
           user_id?: string | null
         }
         Update: {
           beatname?: string | null
           bpm?: string | null
-          cover_art?: string | null
           created_at?: string
-          file_mp3?: Json | null
-          id?: number
-          license_id?: string | null
-          tags?: string[] | null
+          genre?: string | null
+          id?: string
+          key?: Json | null
+          license_basic?: string | null
+          tags?: string[]
           user_id?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "beats_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      files: {
+        Row: {
+          beat_id: string
+          file_path: string | null
+          id: number
+          user_id: string
+        }
+        Insert: {
+          beat_id: string
+          file_path?: string | null
+          id?: number
+          user_id: string
+        }
+        Update: {
+          beat_id?: string
+          file_path?: string | null
+          id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "files_beat_id_fkey"
+            columns: ["beat_id"]
+            referencedRelation: "beats"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "files_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
             referencedColumns: ["id"]
