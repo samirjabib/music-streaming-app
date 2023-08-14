@@ -6,7 +6,7 @@ const Logo: FC = () => {
   return (
     <div>
       <Link href="/" className="logo">
-        <Title>
+        <Title className="">
           Fire<span className="text-primary">Beats</span>
         </Title>
       </Link>

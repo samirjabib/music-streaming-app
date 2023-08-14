@@ -5,7 +5,7 @@ import { Beat } from "@/lib/db/types/collections";
 
 export default function HomePage({ beats }: { beats: Beat[] }) {
   return (
-    <main className="w-full h-full overflow-hiden overflow-y-auto rounded-lg px-4">
+    <main className="w-full wrapper wrapper-mobile">
       <Header />
       <Separator className="mb-3" />
       <HomeHero beats={beats} />

@@ -80,7 +80,7 @@ export default function RegisterModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"ghost"}>Sign in</Button>
+        <Button variant={"secondary"}>Sign in</Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col w-full items-center h-auto">
         <DialogHeader></DialogHeader>

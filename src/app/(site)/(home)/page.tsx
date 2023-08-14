@@ -17,11 +17,7 @@ export default async function Home() {
 
   return (
     <>
-      <Card className="h-full ">
-        <CardContent className="h-full">
-          <HomePage beats={beats} />
-        </CardContent>
-      </Card>
+      <HomePage beats={beats} />
     </>
   );
 }

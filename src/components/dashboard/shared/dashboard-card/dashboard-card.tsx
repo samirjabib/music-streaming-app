@@ -1,6 +1,5 @@
 import { Overlay, Title } from "@/design-system";
 import { cn } from "@/lib";
-import Image from "next/image";
 
 export default function DashboardCard({
   className,

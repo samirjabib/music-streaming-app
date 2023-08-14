@@ -8,10 +8,9 @@ import { BeatDataPayload } from "@/components/dashboard/producer/types";
 const supabase = createClientComponentClient<Database>();
 
 /*************************** Queries *******************************/
-
 export async function getBeatFiles({ beat_id }: { beat_id: string }) {
   const { data, error } = await supabase
-    .from("files")
+    .from("files_beat")
     .select("*")
     .eq("beat_id", beat_id);
 
@@ -19,7 +18,20 @@ export async function getBeatFiles({ beat_id }: { beat_id: string }) {
     return { error };
   }
 
-  return data;
+  return data[0];
+}
+
+export async function getBeatCoverArt({ beat_id }: { beat_id: string }) {
+  const { data, error } = await supabase
+    .from("cover_art")
+    .select("*")
+    .eq("beat_id", beat_id);
+
+  if (error) {
+    return { error };
+  }
+
+  return data[0];
 }
 
 //mutationes

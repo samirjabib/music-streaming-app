@@ -86,7 +86,7 @@
 @layer components {
   /* Headers */
   .main-title {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-foreground ;
+    @apply scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight md:text-5xl text-foreground ;
   }
 
   .section-title {

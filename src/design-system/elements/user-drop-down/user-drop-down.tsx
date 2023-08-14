@@ -4,7 +4,7 @@ import * as React from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
